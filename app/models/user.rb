@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-  def self.generat_session_token
+  def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
 
@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
 
   def password=(pass)
     if pass.present?
-      @password = unenctrypted_password
-      self.password_diges = BCrypt::Password.create(pass)
+      @password = pass
+      self.password_digest = BCrypt::Password.create(pass)
     end
   end
 
