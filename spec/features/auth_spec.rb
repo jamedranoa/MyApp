@@ -4,4 +4,7 @@ feature "Sign up proccess" do
     visit new_user_url
     expect(page).to have_content("Sign Up")
   end
+
+
+
 end
