@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: appacademy
+
   password:
 
 test:
@@ -10,5 +10,5 @@ test:
   encoding: unicode
   database: app_test
   pool: 5
-  username: appacademy
+
   password:
