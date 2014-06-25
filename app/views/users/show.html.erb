@@ -1,12 +1,15 @@
 
-
+<div>
+    <img src="<%= @user.picture %>">
+</div>
+<br>
 <div>
   <ul>
     <li> <strong>Name:</strong> <%= "#{@user.fname} #{@user.lname}" %></li>
 
     <% @user.attributes.each do |attri,val| %>
 
-          <% next if  unvisible_attribute(attri) || val.nil?%>
+          <% next if  unvisible_attribute(attri) || val.nil? || val==""%>
           <li><strong><%= attri.capitalize %>:</strong> <%= val %></li>
           <% end %>
 
