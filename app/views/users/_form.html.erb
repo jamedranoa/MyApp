@@ -1,0 +1,26 @@
+<form action="<%= user_url(user) %>" method="post">
+  <input
+     name="_method"
+     type="hidden"
+     value="put">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="user_fname">First Name</label>
+  <input
+     id="user_fname"
+     name="user[fname]"
+     type="text">
+  <br>
+
+  <label for="user_lname">Last Name</label>
+  <input
+     id="user_lname"
+     name="user[lname]"
+     type="text">
+  <br>
+
+  <input type="submit" value="Complete">
+</form>

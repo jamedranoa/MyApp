@@ -31,6 +31,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      render :show
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :edit
+    end
+  end
+
+
   private
 
   def user_params
