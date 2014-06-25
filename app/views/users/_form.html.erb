@@ -12,15 +12,30 @@
   <input
      id="user_fname"
      name="user[fname]"
-     type="text">
+     type="text"
+     value="<%= user.fname %>">
   <br>
 
   <label for="user_lname">Last Name</label>
   <input
      id="user_lname"
      name="user[lname]"
-     type="text">
+     type="text"
+     value="<%= user.lname %>">
   <br>
+
+  <% @user.attributes.each do |attri,val| %>
+
+        <% next if  unvisible_attribute(attri)%>
+
+        <label for="<%= attri %>"><%= attri.capitalize %></label>
+        <input
+           id="<%= attri %>"
+           name="user[<%= attri %>]"
+           type="text"
+           value="<%= val %>">
+        <br>
+  <% end %>
 
   <input type="submit" value="Complete">
 </form>
