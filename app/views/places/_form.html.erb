@@ -1,0 +1,32 @@
+<% form_url = place.persisted? ?  user_place(place): user_places_url(current_user) %>
+
+<form action="<%= form_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <% if place.persisted? %>
+    <input type="hidden"
+           name="_method"
+           value="patch">
+  <% end %>
+
+
+
+
+  <% place.attributes.each do |attri,val| %>
+
+          <% next if  place_unvisible_attribute(attri)%>
+
+          <label for="<%= attri %>"><%= attri.capitalize %></label>
+          <input
+             id="<%= attri %>"
+             name="place[<%= attri %>]"
+             type="text"
+             value="<%= val %>">
+          <br>
+          <br>
+    <% end %>
+
+  <input type="submit" value="Submit Post">
+</form>
