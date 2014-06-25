@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
+  before_action :require_signed_in!, :only => [:show]
+  before_action :require_signed_out!, :only => [:create, :new]
+
   def new
     @user = User.new
   end
 
   def create
-    if user_params.password != params[confirm]
-      flash.now[:errors] = "Passwords must match"
-    end
     @user = User.new(user_params)
+    if user_params[:password] != params[:confirm]
+      flash.now[:errors] = ["Passwords must match"]
+      render :new
+      return @user
+    end
 
     if @user.save
       sign_in(@user)
