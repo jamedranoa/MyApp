@@ -1,4 +1,4 @@
-<% form_url = place.persisted? ?  user_place(place): user_places_url(current_user) %>
+<% form_url = place.persisted? ?  user_place_url(current_user,place): user_places_url(current_user) %>
 
 <form action="<%= form_url %>" method="post">
   <input type="hidden"

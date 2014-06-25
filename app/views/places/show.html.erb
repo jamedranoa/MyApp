@@ -1,0 +1,17 @@
+<img src="<%= @place.picture %>">
+<ul>
+  <% @place.attributes.each do |attri,val| %>
+
+          <% next if  place_unvisible_attribute(attri) %>
+          <% val = "N/A" if val.nil? || val == ""%>
+
+          <li><strong><%= attri.capitalize %>:</strong> <%= val %></li>
+
+    <% end %>
+
+</ul>
+
+
+<% if @place.owner == current_user %>
+  <a href="<%= edit_user_place_url(current_user,@place) %>">Edit</a>
+<%end%>

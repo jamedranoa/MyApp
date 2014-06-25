@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-  has_many :places, foreign_key: :owner_id
+  has_many :places, foreign_key: :owner_id, dependent: :destroy
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

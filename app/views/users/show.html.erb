@@ -16,8 +16,18 @@
   </ul>
 </div>
 
- <% if @user.id == current_user.id %>
+<div>
+  <h2> Teo's Places </h2>
+    <ul>
+      <% @user.places.each do |place| %>
+        <li><a href="<%= place_url(place) %>"><%= place.title %></a></li>
+      <% end %>
+    </ul>
+</div>
+
+ <% if current_user && @user.id == current_user.id %>
    <a href="<%= edit_user_url(@user) %>">Edit</a>
+   <a href="<%= new_user_place_url(@user) %>">Add a Place </a>
  <% end %>
 
 

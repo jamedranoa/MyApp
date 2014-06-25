@@ -16,13 +16,28 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @place = Place.find(params[:id])
+  end
+
+  def edit
     @place = current_user.places.find(params[:id])
+  end
+
+  def update
+    @place = current_user.places.find(params[:id])
+
+    if @place.update(place_params)
+      render :show
+    else
+      flash[:errors] = @place.errors.full_messages
+      render :edit
+    end
   end
 
 
   private
   def place_params
-    params.require(:place).permit(:title, :type, :max_guest, :price, :bed_type, :num_bathrooms, :num_beds, :country, :city, :neighborhood, :address, :picture)
+    params.require(:place).permit(:title, :kind, :max_guest, :price, :bed_type, :num_bathrooms, :num_beds, :country, :city, :neighborhood, :address, :picture)
   end
 
 end
