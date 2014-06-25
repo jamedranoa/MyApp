@@ -8,6 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :lname
       t.string :education
       t.string :job
+      t.string :sex
+      t.string :picture
       t.timestamps
     end
     add_index :users, :email, unique: true

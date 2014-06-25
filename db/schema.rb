@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140624150335) do
     t.string   "lname"
     t.string   "education"
     t.string   "job"
+    t.string   "sex"
+    t.string   "picture"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
