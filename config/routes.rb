@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :places, only: [:show]
+  resources :places, only: [:show,:index]
 
   resources :users do
     resources :places, only: [:create,:new,:destroy,:edit,:update]
   end
   resource :session, :only => [:create, :destroy, :new]
-  root to: "users#show", id: '1'
+  root to: "places#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

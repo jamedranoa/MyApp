@@ -30,7 +30,11 @@ class UsersController < ApplicationController
       redirect_to user_url(current_user)
     end
   end
-
+  
+  def index
+    @users = User.all
+  end
+  
   def edit
     @user = current_user
   end
