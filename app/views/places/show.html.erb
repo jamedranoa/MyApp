@@ -11,8 +11,9 @@
 
 </ul>
 
-<a href="<%= cu %>">
 
 <% if @place.owner == current_user %>
   <a href="<%= edit_user_place_url(current_user,@place) %>">Edit</a>
 <%end%>
+
+<strong>Owner: </strong><a href="<%= user_url(@place.owner_id) %>"><%= @place.owner.fname.capitalize %></a>
