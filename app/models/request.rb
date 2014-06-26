@@ -4,5 +4,5 @@ class Request < ActiveRecord::Base
   
   belongs_to :place, inverse_of: :requests
   belongs_to :applicant, class_name: "User"
-  belongs_to :responder, through: :place, source: :owner
+  
 end
