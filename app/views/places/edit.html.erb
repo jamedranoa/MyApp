@@ -1,3 +1,15 @@
 <h1> Edit Your Place </h1>
 
 <%= render "form", place: @place %>
+
+<form action="<%= block_user_place_url(current_user,@place) %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+         
+  <label for="block">
+    Block a day
+    <input type="date" name="block[day]" id="block">
+  </label>
+  <input type="submit" value="Block">
+</form>

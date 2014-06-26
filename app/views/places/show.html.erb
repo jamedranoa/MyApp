@@ -11,6 +11,13 @@
 
 </ul>
 
+<h2>Reserved Dates</h2>
+<ul>
+  <% @place.reserved_dates.pluck(:day).each do |day| %>
+  
+      <li><%= day %></li>
+  <%end %>
+</ul>
 
 <% if @place.owner == current_user %>
   <a href="<%= edit_user_place_url(current_user,@place) %>">Edit</a>

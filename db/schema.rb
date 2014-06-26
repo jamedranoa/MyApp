@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625181920) do
+ActiveRecord::Schema.define(version: 20140626151915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20140625181920) do
     t.string   "picture"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "s_date"
+    t.date     "end_date"
   end
 
   add_index "places", ["address"], name: "index_places_on_address", using: :btree
@@ -105,6 +107,15 @@ ActiveRecord::Schema.define(version: 20140625181920) do
     t.string "product_type_cd", limit: 10, null: false
     t.string "name",            limit: 50, null: false
   end
+
+  create_table "reserved_dates", force: true do |t|
+    t.integer  "place_id"
+    t.date     "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reserved_dates", ["place_id", "day"], name: "index_reserved_dates_on_place_id_and_day", unique: true, using: :btree
 
 # Could not dump table "transaction" because of following StandardError
 #   Unknown type 'transaction_type' for column 'txn_type_cd'

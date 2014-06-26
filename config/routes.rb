@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   resources :places, only: [:show,:index]
 
   resources :users do
-    resources :places, only: [:create,:new,:destroy,:edit,:update]
+    resources :places, only: [:create,:new,:destroy,:edit,:update] do
+      member do
+        post "block"
+      end
+    end
   end
   resource :session, :only => [:create, :destroy, :new]
   root to: "places#index"
