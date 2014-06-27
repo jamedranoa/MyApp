@@ -1,20 +1,26 @@
 Rails.application.routes.draw do
-  resources :places, only: [:show,:index]
+  resources :places, only: [:show,:index] do
+    resources :requests, only:[:create, :new]
+  end
 
   resources :users do
     resources :places, only: [:create,:new,:destroy,:edit,:update] do
       member do
         post "block"
       end
-      resource :requests, only:[:create] 
+
     end
-    resource :requests do
+  end
+
+
+    resources :requests,only:[] do
       member do
         put "approve"
         put "deny"
       end
     end
-  end
+
+
   resource :session, :only => [:create, :destroy, :new]
   root to: "places#index"
   # The priority is based upon order of creation: first created -> highest priority.

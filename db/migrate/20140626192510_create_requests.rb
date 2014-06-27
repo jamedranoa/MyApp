@@ -5,6 +5,7 @@ class CreateRequests < ActiveRecord::Migration
       t.integer :applicant_id, null: false
       t.date :start_date, null: false
       t.date :end_date, null: false
+      t.text :message
       t.boolean :approved
       t.timestamps
     end

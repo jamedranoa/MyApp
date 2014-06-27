@@ -42,4 +42,6 @@ class User < ActiveRecord::Base
      user.try(:is_password?, password) ? user : nil
   end
 
+
+
 end

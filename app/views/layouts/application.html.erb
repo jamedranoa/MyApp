@@ -5,10 +5,13 @@
 
 </head>
 <body>
+  <a href="/" %>logo</a>
   <% if signed_in? %>
       <ul>
         <li>Signed in as: <%= current_user.fname %></li>
         <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
+        <li><%= button_to "#{current_user.fname}",user_url(current_user), method: :get%></li>
+
       </ul>
       <% else %>
       <p>

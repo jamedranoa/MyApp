@@ -25,7 +25,20 @@
     </ul>
 </div>
 
+<h2>Requests</h2>
+
  <% if current_user && @user.id == current_user.id %>
+ <ul>
+   <% @user.requests.each do |request| %>
+
+     <% if request.approved == nil %>
+       <li><%= "#{request.place.title}, #{request.start_date}, #{request.end_date}" %>
+           <%= button_to "Approve",approve_request_url(request),method: :put %>
+           <%= button_to "Deny", deny_request_url(request),method: :put %>
+         <%end%>
+         </li>
+     <% end %>
+ </ul>
    <a href="<%= edit_user_url(@user) %>">Edit</a>
    <a href="<%= new_user_place_url(@user) %>">Add a Place </a>
  <% end %>
