@@ -21,7 +21,7 @@
 
 <% if @place.owner == current_user %>
   <a href="<%= edit_user_place_url(current_user,@place) %>">Edit</a>
-<% else %>
+<% elsif current_user%>
   <a href="<%= new_place_request_url(@place) %>">Make a Request</a>
 <%end%>
 
