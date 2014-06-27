@@ -1,10 +1,11 @@
 class CreateRequests < ActiveRecord::Migration
   def change
     create_table :requests do |t|
-      t.integer :place_id
-      t.integer :applicant_id
-      t.date :start_date
-      t.date :end_date
+      t.integer :place_id, null: false
+      t.integer :applicant_id, null: false
+      t.date :start_date, null: false
+      t.date :end_date, null: false
+      t.boolean :approved
       t.timestamps
     end
     add_index :requests, :place_id

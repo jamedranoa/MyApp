@@ -5,4 +5,9 @@ class Place < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
   has_many :reserved_dates
   has_many :requests, dependent: :destroy
+  
+  def reserved_days
+    self.reserved_dates.pluck(:day)
+  end
+  
 end

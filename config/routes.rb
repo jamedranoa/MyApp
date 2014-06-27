@@ -6,6 +6,13 @@ Rails.application.routes.draw do
       member do
         post "block"
       end
+      resource :requests, only:[:create] 
+    end
+    resource :requests do
+      member do
+        put "approve"
+        put "deny"
+      end
     end
   end
   resource :session, :only => [:create, :destroy, :new]

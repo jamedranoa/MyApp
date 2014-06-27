@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626192510) do
+ActiveRecord::Schema.define(version: 20140626151915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,18 +107,6 @@ ActiveRecord::Schema.define(version: 20140626192510) do
     t.string "product_type_cd", limit: 10, null: false
     t.string "name",            limit: 50, null: false
   end
-
-  create_table "requests", force: true do |t|
-    t.integer  "place_id"
-    t.integer  "applicant_id"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "requests", ["applicant_id"], name: "index_requests_on_applicant_id", using: :btree
-  add_index "requests", ["place_id"], name: "index_requests_on_place_id", using: :btree
 
   create_table "reserved_dates", force: true do |t|
     t.integer  "place_id"
