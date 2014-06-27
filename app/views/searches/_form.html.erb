@@ -1,0 +1,23 @@
+<form action="<%= perform_search_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+         
+  <label for="city">
+    Where?
+    <input type="text" name="search[city]" id="city">
+  </label>
+  
+  <label for="in">
+    Check in
+    <input type="date" name="search[start_date]" id="in">
+  </label>
+  
+  <label for="out">
+    Check out
+    <input type="date" name="search[end_date]" id="out">
+  </label>
+  
+  <input type="submit" value="Search">
+
+</form>

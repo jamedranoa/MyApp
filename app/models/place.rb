@@ -23,5 +23,9 @@ class Place < ActiveRecord::Base
       self.reserved_dates.create!(day: date)
     end
   end
+  
+  def compatible_dates(dates)
+    (self.reserved_days & dates).empty?
+  end
 
 end

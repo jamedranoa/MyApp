@@ -1,0 +1,7 @@
+<h1>Results</h1>
+
+<ul>
+  <% @places.each do |place| %>
+    <a href="<%= place_url(place) %>"><li><%= place.title %></li></a>
+  <% end %>
+</ul>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  
+  resource :search, only: [:new] do
+    post "perform"
+    get "results"
+  end
+  
   resources :places, only: [:show,:index] do
     resources :requests, only:[:create, :new]
   end

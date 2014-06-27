@@ -1,9 +1,9 @@
+<main>
+<div>
+    <img class="user" src="<%= @user.picture %>">
 
-<div>
-    <img src="<%= @user.picture %>">
-</div>
 <br>
-<div>
+
   <ul>
     <li> <strong>Name:</strong> <%= "#{@user.fname} #{@user.lname}" %></li>
 
@@ -14,17 +14,26 @@
           <% end %>
 
   </ul>
-</div>
+  <% if current_user && @user.id == current_user.id %>
+    <a href="<%= edit_user_url(@user) %>">Edit</a>
+    <a href="<%= new_user_place_url(@user) %>">Add a Place </a>
+  <% end %>
 
+</div>
+<% unless @user.places.empty? %>
 <div>
+  
   <h2> <%= @user.fname.capitalize %>'s Places </h2>
     <ul>
       <% @user.places.each do |place| %>
-        <li><a href="<%= place_url(place) %>"><%= place.title %></a></li>
+        <a href="<%= place_url(place) %>"><li><%= place.title %>
+          <img class="place" src="<%= place.picture %>"></li></a>
       <% end %>
     </ul>
 </div>
+<% end %>
 
+<div class="requests">
 <h2>Requests</h2>
 
  <% if current_user && @user.id == current_user.id %>
@@ -37,10 +46,34 @@
            <%= button_to "Deny", deny_request_url(request),method: :put %>
          <%end%>
          </li>
+         <br>
      <% end %>
  </ul>
-   <a href="<%= edit_user_url(@user) %>">Edit</a>
-   <a href="<%= new_user_place_url(@user) %>">Add a Place </a>
+   
  <% end %>
+ 
+ <br>
+ <br>
+ 
+ <h2>Pending Requests</h2>
+ <% if current_user && @user.id == current_user.id %>
+ <ul>
+   <% @user.made_requests.each do |request| %>
+     <% if request.approved == true %>
+       <% a = "Approved"%>
+     <%elsif request.approved == false%>
+       <% a = "Denied"%>
+     <%else%>
+       <% a = "Waiting" %>
+     <%end%>
+ 
+       <li><%= "#{request.place.title}, #{a}" %></li>
+     <% end %>
+ </ul>
+  
+ <% end %>
+ 
+</div>
 
 
+</main>

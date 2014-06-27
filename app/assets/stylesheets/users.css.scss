@@ -1,3 +1,52 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+main ul{
+  list-style:none;
+  
+}
+
+main {
+  height: 800px;
+  widht: 800px;
+}
+
+main div {
+  float: left;
+  max-height: 500px;
+  max-width: 33%;
+  overflow: auto;
+  margin-left: 20px;
+}
+
+main div ul li{
+  max-height: 25%;
+  border: 1px solid black;
+  margin:0px 0px 0px;
+  padding: 0px 0px 0px;
+}
+
+main div .requests{
+  max-width: 33%;
+  overflow: auto;
+}
+
+.place{
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: 0px;
+}
+
+
+
+.user{
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: 0px;
+}
+
+.requests ul li {
+  border: none;
+  margin-top: 10px;
+}
+

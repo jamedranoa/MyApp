@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :fname, presence: true
 
   before_validation :ensure_session_token
+  before_validation :ensure_picture
 
   has_many :places, foreign_key: :owner_id, dependent: :destroy
   has_many :requests, through: :places
@@ -40,6 +41,10 @@ class User < ActiveRecord::Base
   def self.find_by_credentials(email, password)
      user = User.find_by_email(email)
      user.try(:is_password?, password) ? user : nil
+  end
+  
+  def ensure_picture
+    self.picture ||= "http://goo.gl/DegTzj"
   end
 
 
