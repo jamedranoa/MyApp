@@ -6,10 +6,10 @@ class SearchesController < ApplicationController
   def perform
     @places = Place.where(city: search_city)
   
-    @places.select!{|place| place.compatible_dates(search_dates)} if @places
- 
+    @places = @places.select{|place| place.compatible_dates(search_dates)} 
+    
     if @places
-      flash[:search]= @places.pluck(:id)
+      flash[:search]= @places.map{|place| place.id}
       redirect_to results_search_url
     else
       flash[:errors] = ["No Results For Your Search"]
@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
   
   private 
   def search_dates
-    (params[:search][:start_date]..params[:search][:end_date]).to_a
+    (Date.parse(params[:search][:start_date])..Date.parse(params[:search][:end_date])).to_a
   end
   
   def search_city
