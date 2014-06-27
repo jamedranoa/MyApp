@@ -6,11 +6,11 @@ User.create!([
 ])
 
 
-Place.create!([
-  {owner_id: 1, title: "New York's House", kind: "", max_guest: 5, price: nil, bed_type: "", num_bathrooms: "4", num_beds: "", country: "", city: "New York", neighborhood: "", address: "", picture: "http://goo.gl/Mfmevh"},
-  {owner_id: 1, title: "Chicago's House", kind: "nice", max_guest: 5, price: nil, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "Chicago", neighborhood: "", address: "", picture: "http://goo.gl/6IajKV"},
-  {owner_id: 1, title: "SF's House", kind: "", max_guest: 5, price: nil, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "San Francisco", neighborhood: "", address: "", picture: "http://goo.gl/2KHzuw"},
-  {owner_id: 1, title: "Seattle's House", kind: "", max_guest: 5, price: 545, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "Seattle", neighborhood: "", address: "", picture: "http://goo.gl/2W31Ot"},
-  {owner_id: 1, title: "second new york house", kind: "", max_guest: nil, price: nil, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "New York", neighborhood: "", address: "", picture: ""}
+User.first.create!([
+  {title: "New York's House", kind: "", max_guest: 5, price: nil, bed_type: "", num_bathrooms: "4", num_beds: "", country: "", city: "New York", neighborhood: "", address: "", picture: "http://goo.gl/Mfmevh"},
+  {title: "Chicago's House", kind: "nice", max_guest: 5, price: nil, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "Chicago", neighborhood: "", address: "", picture: "http://goo.gl/6IajKV"},
+  {title: "SF's House", kind: "", max_guest: 5, price: nil, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "San Francisco", neighborhood: "", address: "", picture: "http://goo.gl/2KHzuw"},
+  {title: "Seattle's House", kind: "", max_guest: 5, price: 545, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "Seattle", neighborhood: "", address: "", picture: "http://goo.gl/2W31Ot"},
+  {title: "second new york house", kind: "", max_guest: nil, price: nil, bed_type: "", num_bathrooms: "", num_beds: "", country: "", city: "New York", neighborhood: "", address: "", picture: ""}
 ])
 
