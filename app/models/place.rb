@@ -3,8 +3,13 @@ class Place < ActiveRecord::Base
   validates :title, presence: true
 
   belongs_to :owner, class_name: "User"
+  
   has_many :reserved_dates
+  
   has_many :requests, dependent: :destroy
+  
+  has_many :reviews, as: :reviewable
+  
 
   def reserved_days
     self.reserved_dates.pluck(:day)
