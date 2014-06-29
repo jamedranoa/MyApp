@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :reviews
+
   resource :search, only: [:new] do
     post "perform"
     get "results"
