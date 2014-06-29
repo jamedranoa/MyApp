@@ -23,6 +23,7 @@ class SearchesController < ApplicationController
   end
   
   private 
+  
   def search_dates
     (Date.parse(params[:search][:start_date])..Date.parse(params[:search][:end_date])).to_a
   end

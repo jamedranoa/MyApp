@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
+
+gem 'aws-sdk', '~> 1.5.7'
+
+gem 'omniauth-facebook'
+
 gem 'seed_dump'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

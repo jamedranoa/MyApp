@@ -47,6 +47,20 @@ class User < ActiveRecord::Base
     self.picture ||= "http://goo.gl/DegTzj"
   end
 
-
+  def self.find_or_create_by_fb(auth_hash)
+    user = self.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
+    
+    unless user
+      user = self.create!(
+        uid: auth_hash[:uid],
+        provider: auth_hash[:provider],
+        email: auth_hash[:info][:email],
+        fname: auth_hash[:info][:first_name],
+        password_digest: SecureRandom::urlsafe_base64(16)
+      )
+    end
+    
+    user
+  end
 
 end
