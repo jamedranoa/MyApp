@@ -1,6 +1,6 @@
 <main>
 <div>
-    <img class="user" src="<%= @user.picture %>">
+    <img class="user" src="<%= @user.picture.url(:large) %>">
 
 <br>
 
@@ -77,3 +77,14 @@
 
 
 </main>
+
+  <h2>Reviews</h2>
+    <ul>
+      <% @user.reviews.each do |review| %>
+        <li>
+          <%= review.maker.fname %>
+            <p><%= review.body  %><p>
+        </li>
+      <% end %>
+    </ul>
+  <a href="<%= new_user_review_url(@user) %>">Make a review</a>

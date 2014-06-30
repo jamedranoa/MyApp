@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :reviews
+  resources :reviews, only: [:create]
 
   resource :search, only: [:new] do
     post "perform"
@@ -9,15 +9,19 @@ Rails.application.routes.draw do
   
   resources :places, only: [:show,:index] do
     resources :requests, only:[:create, :new]
+    resources :reviews, only:[:new]
   end
 
   resources :users do
+    
     resources :places, only: [:create,:new,:destroy,:edit,:update] do
       member do
         post "block"
       end
-
     end
+    
+    resources :reviews, only:[:new]
+    
   end
 
 

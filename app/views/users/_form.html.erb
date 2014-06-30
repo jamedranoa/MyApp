@@ -1,4 +1,4 @@
-<form action="<%= user_url(user) %>" method="post">
+<form action="<%= user_url(user) %>" method="post" enctype="multipart/form-data">
   <input
      name="_method"
      type="hidden"
@@ -7,7 +7,11 @@
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
-
+     
+  <label for="user_picture">Profile picture
+    <input id="user_picture" type="file" name="user[picture]">
+  </label>
+  
   <label for="user_fname">First Name</label>
   <input
      id="user_fname"

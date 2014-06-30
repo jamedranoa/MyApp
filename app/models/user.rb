@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
+  has_attached_file :picture, styles: {small: '60x60#', large: '200x200#'}
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+  
   validates :password_digest, presence: true
   validates :password, length:{minimum: 6, allow_nil: true}
   validates :session_token, presence: true, uniqueness: true
@@ -8,6 +11,7 @@ class User < ActiveRecord::Base
   validates :fname, presence: true
 
   before_validation :ensure_session_token
+  
   before_validation :ensure_picture
 
   has_many :places, foreign_key: :owner_id, dependent: :destroy
@@ -49,7 +53,7 @@ class User < ActiveRecord::Base
   end
   
   def ensure_picture
-    self.picture ||= "http://goo.gl/DegTzj"
+    self.picture ||= proccess_uri"http://goo.gl/DegTzj"
   end
 
   def self.find_or_create_by_fb(auth_hash)
@@ -60,6 +64,7 @@ class User < ActiveRecord::Base
         uid: auth_hash[:uid],
         provider: auth_hash[:provider],
         email: auth_hash[:info][:email],
+        picture: process_uri(auth_hash[:info][:image]),
         fname: auth_hash[:info][:first_name],
         password_digest: SecureRandom::urlsafe_base64(16)
       )
@@ -67,5 +72,17 @@ class User < ActiveRecord::Base
     
     user
   end
+  
+  private
+  
+  def self.process_uri(uri)
+    require "open-uri"
+    require 'open_uri_redirections'
+    
+    open(uri, :allow_redirections => :safe) do |r|
+      r.base_uri.to_s
+    end
+  end
+    
 
 end

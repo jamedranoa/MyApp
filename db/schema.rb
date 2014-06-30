@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629131134) do
+ActiveRecord::Schema.define(version: 20140629223032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,28 +65,34 @@ ActiveRecord::Schema.define(version: 20140629131134) do
   add_index "reserved_dates", ["place_id", "day"], name: "index_reserved_dates_on_place_id_and_day", unique: true, using: :btree
 
   create_table "reviews", force: true do |t|
-    t.text     "body"
-    t.integer  "maker_id"
-    t.integer  "reviewable_id"
-    t.string   "reviewable_type"
+    t.text     "body",            null: false
+    t.integer  "maker_id",        null: false
+    t.integer  "reviewable_id",   null: false
+    t.string   "reviewable_type", null: false
+    t.integer  "score",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
+
   create_table "users", force: true do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
+    t.string   "email",                null: false
+    t.string   "password_digest",      null: false
     t.string   "session_token"
-    t.string   "fname",           null: false
+    t.string   "fname",                null: false
     t.string   "lname"
     t.string   "education"
     t.string   "job"
     t.string   "sex"
-    t.string   "picture"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uid"
     t.string   "provider"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

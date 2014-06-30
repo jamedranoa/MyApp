@@ -26,3 +26,19 @@
 <%end%>
 
 <strong>Owner: </strong><a href="<%= user_url(@place.owner_id) %>"><%= @place.owner.fname.capitalize %></a>
+
+
+<div>
+  <h2>Reviews</h2>
+    <ul>
+      <% @place.reviews.each do |review| %>
+        <li>
+          <%= review.maker.fname %>
+            <p><%= review.body  %><p>
+        </li>
+      <% end %>
+    </ul>
+  
+</div>
+
+<a href="<%= new_place_review_url(@place) %>">Make a review</a>
