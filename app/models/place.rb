@@ -10,6 +10,10 @@ class Place < ActiveRecord::Base
   
   has_many :reviews, as: :reviewable
   
+  has_many :place_pics, dependent: :destroy
+  
+  has_many :place_pics
+
 
   def reserved_days
     self.reserved_dates.pluck(:day)

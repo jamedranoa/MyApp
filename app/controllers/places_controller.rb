@@ -6,6 +6,7 @@ class PlacesController < ApplicationController
 
   def create
     @place = current_user.places.new(place_params)
+    @place.place_pics.new(picture: params[:first_pic][:picture])
 
     if @place.save
       redirect_to :root #place_url(@place)

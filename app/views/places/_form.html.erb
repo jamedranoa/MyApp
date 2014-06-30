@@ -1,6 +1,6 @@
 <% form_url = place.persisted? ?  user_place_url(current_user,place): user_places_url(current_user) %>
 
-<form action="<%= form_url %>" method="post">
+<form action="<%= form_url %>" method="post" enctype="multipart/form-data">
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
@@ -10,9 +10,10 @@
            name="_method"
            value="patch">
   <% end %>
-
-
-
+  <label>
+    Add a picture
+    <input type="file" name="first_pic[picture]">
+  </label>
 
   <% place.attributes.each do |attri,val| %>
 

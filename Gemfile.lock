@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 50bfa55270663127a64cac97820d647a746f85d6
+  specs:
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -144,11 +154,6 @@ GEM
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
     open_uri_redirections (0.1.4)
-    paperclip (4.1.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.0)
@@ -269,7 +274,7 @@ DEPENDENCIES
   launchy
   omniauth-facebook
   open_uri_redirections (~> 0.1.4)
-  paperclip
+  paperclip!
   pg
   pry-rails
   rails (= 4.1.1)

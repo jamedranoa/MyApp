@@ -4,7 +4,7 @@ gem 'open_uri_redirections', '~> 0.1.4'
 
 gem 'figaro'
 
-gem 'paperclip'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 gem 'aws-sdk', '~> 1.5.7'
 

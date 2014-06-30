@@ -1,4 +1,4 @@
-<img src="<%= @place.picture %>">
+<img src="<%= @place.place_pics.first.picture.url(:large) %>">
 <ul>
   <% @place.attributes.each do |attri,val| %>
 
