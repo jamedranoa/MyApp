@@ -3,45 +3,37 @@
 <head>
   <title>App</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-<style>
-nav ul {
-  list-style: none;
-  padding: 0;
-}
-nav ul li{
-  float: left;
-  margin-right: 10px;
-}
-.group:after{
-  content: "";
-  display: block;
-  clear: both;
-}
-</style>
 
 </head>
 <body>
-  <nav>
-  <ul class="header group">
-    <li><a href="/" %>logo</a></li>
-    <li><a href="<%= new_search_url %>">search</a></li>
-    
-  <% if signed_in? %>
-        <li>Signed in as: <%= current_user.fname %></li>
-        <li><%= button_to "Sign Out", session_url, :method => :delete %></li>
-        <li><%= button_to "#{current_user.fname}",user_url(current_user), method: :get%></li>
+  <header class="header group">
+  
+      <ul class="header-logo-search">
+        <li><a href="/" %>Logo</a></li>
+        <li><a href="<%= new_search_url %>">Search</a></li>
+      </ul>
 
-   
-      <% else %>
-      <p>
-        <li><%= link_to "Sign In", new_session_url %></li> 
-        <li><%= link_to "Sign up", new_user_url %></li>
-      </p>
-      <% end %>
-  </ul>
-</nav>
+      <ul class="header-links">
+      <% if signed_in? %>
+          <li class="profile"><a class="group" href="<%= user_url(current_user)%>" class="to-profile">
+            <div class="fname"><%= current_user.fname%></div>
+            <img class="min-pic" src="<%= current_user.picture.url(:small)%>">
+           </a>
+          </li> 
+            <li><%= button_to "Log Out", session_url, :method => :delete %></li>
 
-      <hr>
+
+
+          <% else %>
+            <li><%= link_to "Sign In", new_session_url %></li> 
+            <li><%= link_to "Sign up", new_user_url %></li>
+          <% end %>
+      </ul>
+      
+</header>
+
+<br>
+
 
       <% if flash[:errors] %>
       <h3>Please fix the following errors:</h3>

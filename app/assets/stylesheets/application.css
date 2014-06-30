@@ -13,3 +13,150 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, header, footer, section, article, div,
+strong, a, img, p, h1, h2, h3, time, ul, li, small,
+form, label {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+input[type="text"],
+input[type="submit"],
+input[type="password"],
+button,
+textarea {
+  display: inline-block;
+  box-sizing: content-box;
+  -webkit-appearance: none;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  font: inherit;
+  background: transparent;
+  vertical-align: baseline;
+  color:inherit;
+  
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #eee;
+  font-size: 16px;
+  overflow: hidden;
+  
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+
+
+strong {
+  font-weight: bold;
+}
+
+img {
+  display: block;
+}
+
+.group:after{
+  content: "";
+  clear: both;
+  display: block;
+}
+
+header{
+  background-color: rgb(198, 198, 201);
+  height: 50px;
+  min-width:200px;
+  vertical-align: middle;
+  border-radius: 10px;
+  color:rgb(53, 53, 100);
+  overflow: hidden;
+}
+
+header .header-logo-search{
+  float: left;
+  height:100%;
+  
+  width: 30%;
+}
+
+header .header-links{
+  float: right;
+  
+  width:400px;
+}
+
+header li{
+  float: left;
+  height: 100%;
+  width: 40%;
+  text-align:center;
+  font-weight: bold;
+  
+}
+
+header li a{
+  display: block;
+  height:50px;
+  text-align:center;
+  line-height: 50px;
+}
+
+
+header li input[type="submit"]{
+  display:block;
+  height:50px;
+  text-align:center;
+  width: 100%;
+}
+
+header li.profile div{
+  float:left;
+  width:60%;
+  
+}
+
+header li.profile img.min-pic{
+  display:block;
+  float:left;
+  border-radius: 50px;
+  max-height: 100%;
+}
+
+
+header .header-logo-search li {
+  border-right: 1px solid white;
+}
+
+header .header-links li{
+  border-left: 1px solid white;
+}
+
+header .header-logo-search li:first-child{
+  font-family: "Brush Script MT", cursive;
+  font-weight: bold;
+  font-size: 32px;
+
+}
+
+
+header li:hover{
+  background: #D7DDDC;
+  cursor: pointer;
+}
+

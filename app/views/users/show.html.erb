@@ -27,7 +27,7 @@
     <ul>
       <% @user.places.each do |place| %>
         <a href="<%= place_url(place) %>"><li><%= place.title %>
-          <img class="place" src="<%= place.picture %>"></li></a>
+          <img class="place" src="<%= place.place_pics.first.picture.url(:small) %>"></li></a>
       <% end %>
     </ul>
 </div>
