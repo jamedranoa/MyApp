@@ -36,6 +36,9 @@ Rails.application.routes.draw do
   resource :session, :only => [:create, :destroy, :new]
   root to: "places#index"
   
+  namespace :api, defaults:{format: :json} do
+    resources :users, only:[:show,:edit]
+  end
   
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
   # The priority is based upon order of creation: first created -> highest priority.
