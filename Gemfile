@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'backbone-on-rails'
+
 gem 'open_uri_redirections', '~> 0.1.4'
 
 gem 'figaro'
