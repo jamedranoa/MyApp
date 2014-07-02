@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   resources :reviews, only: [:create]
-
   resource :search, only: [:new] do
     post "perform"
     get "results"
@@ -37,7 +36,7 @@ Rails.application.routes.draw do
   root to: "places#index"
   
   namespace :api, defaults:{format: :json} do
-    resources :users, only:[:show,:edit]
+    resources :users, only:[:show,:edit,:index,:update]
   end
   
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'

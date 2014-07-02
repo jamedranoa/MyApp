@@ -9,5 +9,5 @@ window.App = {
 };
 
 $(document).ready(function(){
-  App.initialize();
+  console.log("backbone working")
 });

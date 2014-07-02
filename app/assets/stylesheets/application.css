@@ -1,4 +1,4 @@
-/*
+/*/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -14,7 +14,7 @@
  *= require_self
  */
 
-html, body, header, footer, section, article, div,
+header body, header, footer, section, article, div,
 strong, a, img, p, h1, h2, h3, time, ul, li, small,
 form, label {
   margin: 0;
@@ -40,7 +40,7 @@ textarea {
   background: transparent;
   vertical-align: baseline;
   color:inherit;
-  
+
 }
 
 body {
@@ -48,14 +48,14 @@ body {
   background-color: #eee;
   font-size: 16px;
   overflow: hidden;
-  
+
 }
 
-ul {
+header ul {
   list-style: none;
 }
 
-a {
+header a {
   display: block;
   text-decoration: none;
   color: inherit;
@@ -91,13 +91,13 @@ header{
 header .header-logo-search{
   float: left;
   height:100%;
-  
+
   width: 30%;
 }
 
 header .header-links{
   float: right;
-  
+
   width:400px;
 }
 
@@ -107,7 +107,7 @@ header li{
   width: 40%;
   text-align:center;
   font-weight: bold;
-  
+
 }
 
 header li a{
@@ -128,7 +128,7 @@ header li input[type="submit"]{
 header li.profile div{
   float:left;
   width:60%;
-  
+
 }
 
 header li.profile img.min-pic{
@@ -159,4 +159,3 @@ header li:hover{
   background: #D7DDDC;
   cursor: pointer;
 }
-

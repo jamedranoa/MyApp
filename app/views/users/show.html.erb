@@ -1,19 +1,25 @@
 <main>
-<div>
+<div class="info">
     <img class="user" src="<%= @user.picture.url(:large) %>">
 
 <br>
 
-  <ul>
-    <li> <strong>Name:</strong> <%= "#{@user.fname} #{@user.lname}" %></li>
+  <script>
+  $(document).ready(function () {
+    var id = parseInt(location.pathname.split("/")[2]);
+    var user = new App.Models.User({id: id});
+    var view = new App.Views.UserShow({model: user})
+    user.fetch({
+      success: function () {
+        $(".info").append(view.render().$el);
+      }
+    })
 
-    <% @user.attributes.each do |attri,val| %>
-
-          <% next if  unvisible_attribute(attri) || val.nil? || val==""%>
-          <li><strong><%= attri.capitalize %>:</strong> <%= val %></li>
-          <% end %>
-
-  </ul>
+  })
+  </script>
+  
+  
+  
   <% if current_user && @user.id == current_user.id %>
     <a href="<%= edit_user_url(@user) %>">Edit</a>
     <a href="<%= new_user_place_url(@user) %>">Add a Place </a>

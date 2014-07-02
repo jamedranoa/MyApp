@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>App</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
   <header class="header group">
@@ -16,6 +17,9 @@
 
       <ul class="header-links">
       <% if signed_in? %>
+        <script>
+          Window.currentUserId = <%= current_user.id %>
+        </script>
           <li class="profile"><a class="group" href="<%= user_url(current_user)%>" class="to-profile">
             <div class="fname"><%= current_user.fname%></div>
             <img class="min-pic" src="<%= current_user.picture.url(:small)%>">

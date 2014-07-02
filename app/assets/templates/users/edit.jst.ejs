@@ -1,0 +1,16 @@
+<form>
+<li>
+  First Name:<input name="user[fname]" value="<%= user.escape('fname') %>"
+</li>
+
+<li>
+  Last Name:<input name="user[lname]" value="<%=user.escape('lname')%>">
+</li>
+
+<li>
+  Education:<input name="user[education]" value="<%=user.escape('education')%>">
+</li>
+
+<input type="submit">
+
+</form>
