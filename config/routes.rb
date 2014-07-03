@@ -1,26 +1,26 @@
 Rails.application.routes.draw do
-  
+
   resources :reviews, only: [:create]
   resource :search, only: [:new] do
     post "perform"
     get "results"
   end
-  
-  resources :places, only: [:show,:index] do
+
+  resources :places, only: [:show, :index] do
     resources :requests, only:[:create, :new]
     resources :reviews, only:[:new]
   end
 
   resources :users do
-    
-    resources :places, only: [:create,:new,:destroy,:edit,:update] do
+
+    resources :places, only: [:create, :new, :destroy, :edit, :update] do
       member do
         post "block"
       end
     end
-    
+
     resources :reviews, only:[:new]
-    
+
   end
 
 
@@ -32,13 +32,14 @@ Rails.application.routes.draw do
     end
 
 
-  resource :session, :only => [:create, :destroy, :new]
+  resource :session, :only => [ :create, :destroy, :new ]
   root to: "places#index"
-  
-  namespace :api, defaults:{format: :json} do
-    resources :users, only:[:show,:edit,:index,:update]
+
+  namespace :api, defaults:{ format: :json } do
+    resources :users, only:[ :show, :edit, :index, :update ]
+    resources :places, only:[ :show, :edit, :index, :update ]
   end
-  
+
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

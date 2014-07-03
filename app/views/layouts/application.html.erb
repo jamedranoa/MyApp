@@ -5,11 +5,11 @@
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
+
 </head>
 <body>
   <header class="header group">
-  
+
       <ul class="header-logo-search">
         <li><a href="/" %>Logo</a></li>
         <li><a href="<%= new_search_url %>">Search</a></li>
@@ -24,20 +24,20 @@
             <div class="fname"><%= current_user.fname%></div>
             <img class="min-pic" src="<%= current_user.picture.url(:small)%>">
            </a>
-          </li> 
+          </li>
             <li><%= button_to "Log Out", session_url, :method => :delete %></li>
 
 
 
           <% else %>
-            <li><%= link_to "Sign In", new_session_url %></li> 
+            <li><%= link_to "Sign In", new_session_url %></li>
             <li><%= link_to "Sign up", new_user_url %></li>
           <% end %>
       </ul>
-      
+
 </header>
 
-<br>
+<div class="content group">
 
 
       <% if flash[:errors] %>
@@ -50,6 +50,8 @@
       <% end %>
 
 <%= yield %>
+
+</div>
 
 </body>
 </html>

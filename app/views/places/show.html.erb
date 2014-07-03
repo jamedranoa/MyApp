@@ -1,13 +1,18 @@
 <img src="<%= @place.place_pics.first.picture.url(:large) %>">
-<ul>
-  <% @place.attributes.each do |attri,val| %>
+<ul class="info">
+  <script>
+  $(document).ready(function () {
+    var id = parseInt(location.pathname.split("/")[2]);
+    var place = new App.Models.Place({id: id});
+    var view = new App.Views.PlaceShow({model: place})
+    place.fetch({
+      success: function () {
+        $(".info").append(view.render().$el);
+      }
+    })
 
-          <% next if  place_unvisible_attribute(attri) %>
-          <% val = "N/A" if val.nil? || val == ""%>
-
-          <li><strong><%= attri.capitalize %>:</strong> <%= val %></li>
-
-    <% end %>
+  })
+  </script>
 
 </ul>
 
@@ -38,7 +43,7 @@
         </li>
       <% end %>
     </ul>
-  
+
 </div>
 
 <a href="<%= new_place_review_url(@place) %>">Make a review</a>

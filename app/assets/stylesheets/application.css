@@ -14,7 +14,7 @@
  *= require_self
  */
 
-header body, header, footer, section, article, div,
+html,body, header, footer, section, article, div,
 strong, a, img, p, h1, h2, h3, time, ul, li, small,
 form, label {
   margin: 0;
@@ -51,11 +51,11 @@ body {
 
 }
 
-header ul {
+ ul {
   list-style: none;
 }
 
-header a {
+ a {
   display: block;
   text-decoration: none;
   color: inherit;
@@ -79,12 +79,13 @@ img {
 }
 
 header{
-  background-color: rgb(198, 198, 201);
+  background-color: rgb(17, 15, 15);
   height: 50px;
+  width:100%;
   min-width:200px;
   vertical-align: middle;
-  border-radius: 10px;
-  color:rgb(53, 53, 100);
+
+  color:rgb(167, 167, 191);
   overflow: hidden;
 }
 
@@ -156,6 +157,32 @@ header .header-logo-search li:first-child{
 
 
 header li:hover{
-  background: #D7DDDC;
+  background: rgb(89, 88, 92);
+  color:white;
   cursor: pointer;
 }
+
+.content {
+  width: 960px;
+  padding: 20px;
+  margin: auto;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.content button{
+    margin-top: 5px ;
+    border-radius: 10px;
+    background-color: black;
+    padding:3px 10px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.content button:hover{
+  background-color:rgb(70, 68, 68);
+  cursor: pointer;
+  box-shadow: 2px 2px 2px #888888;
+
+};

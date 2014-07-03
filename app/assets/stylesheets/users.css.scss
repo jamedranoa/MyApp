@@ -1,53 +1,91 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-main ul{
-  list-style:none;
 
+
+
+.content-sidebar{
+  float:left;
 }
 
-main {
-  height: 800px;
-  widht: 800px;
-}
-
-main div {
-  float: left;
-  max-height: 500px;
-  max-width: 33%;
-  overflow: auto;
-  margin-left: 20px;
-}
-
-main div ul li{
-  max-height: 25%;
-  border: 1px solid black;
-  margin:0px 0px 0px;
-  padding: 0px 0px 0px;
-}
-
-main div .requests{
-  max-width: 33%;
-  overflow: auto;
-}
-
-.place{
-  max-width: 100%;
-  max-height: 100%;
-  margin-left: 0px;
+.content-main{
+  float: right;
+  width: 60%;
 }
 
 
+.profile-picture {
+  width: 200px;
 
+  box-shadow: 5px 5px 10px #888888;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid white;
 
-.user{
-  max-width: 100%;
-  max-height: 100%;
-  margin-left: 0px;
 }
 
-.requests ul li {
-  border: none;
-  margin-top: 10px;
+.info ul{
+  box-shadow: 5px 5px 10px #888888;
+  background-color: rgba(223, 223, 223, 0.35);
+  margin-top:10px;
+  max-width:209px;
+  border-radius: 10px;
+  border: 1px solid rgb(73, 73, 115);
+  margin-bottom: 2px;
+  overflow: hidden;
+  padding: 2px;
+
+
 }
+
+.info ul li{
+
+  width:100%;
+  border-bottom: 2px solid #E5E5EE;;
+}
+
+.info ul li:last-child{
+  border-bottom:0px;
+}
+
+.info ul .interc-1{
+  background:white;
+}
+
+
+.user-edit{
+  display:none;
+}
+
+button.mine{
+  dislpay: block;
+}
+
+#modal {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+
+#modal > form {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  width: 400px;
+  margin-bottom: 100px;
+  margin-left: -250px;
+  min-height: 200px;
+  padding: 50px;
+  background: white;
+  border-radius: 5px;
+}
+
+
+
 

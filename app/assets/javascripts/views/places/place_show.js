@@ -1,11 +1,11 @@
-App.Views.UserShow = Backbone.View.extend({
-
+App.Views.PlaceShow = Backbone.View.extend({
+  tagName: "ul",
   template: function () {
-    return this.open ? JST["users/edit"] : JST["users/show"];
+    return this.open ? JST["places/edit"] : JST["places/show"];
   },
 
   events: {
-    "click li.to-edit": "beginEditing",
+    "dblclick li": "beginEditing",
     "submit form": "endEditing"
   },
 
@@ -25,14 +25,14 @@ App.Views.UserShow = Backbone.View.extend({
     this.open = false;
 
     var params = $(event.currentTarget).serializeJSON();
-    this.model.set(params["user"]);
+    this.model.set(params["place"]);
     this.model.save();
 
     this.render();
   },
 
   render: function () {
-    var renderedContent = this.template()({ user: this.model });
+    var renderedContent = this.template()({ place: this.model });
     this.$el.html(renderedContent);
 
     return this;

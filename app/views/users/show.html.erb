@@ -1,88 +1,102 @@
-<main>
-<div class="info">
-    <img class="user" src="<%= @user.picture.url(:large) %>">
+<% mine = (current_user && current_user.id == @user.id ? "mine" : "") %>
 
-<br>
+<div class="content-sidebar">
+  <div class="profile-picture">
+    <img src="<%= @user.picture.url(:large) %>">
+  </div>
+  <div class="info <%= mine %>">
+    <script>
+    $(document).ready(function () {
+      var id = parseInt(location.pathname.split("/")[2]);
+      var user = new App.Models.User({id: id});
+      var view = new App.Views.UserShow({model: user})
+      user.fetch({
+        success: function () {
+          $(".info").prepend(view.render().$el);
+        }
+      })
 
-  <script>
-  $(document).ready(function () {
-    var id = parseInt(location.pathname.split("/")[2]);
-    var user = new App.Models.User({id: id});
-    var view = new App.Views.UserShow({model: user})
-    user.fetch({
-      success: function () {
-        $(".info").append(view.render().$el);
-      }
     })
+    </script>
 
-  })
-  </script>
-  
-  
-  
-  <% if current_user && @user.id == current_user.id %>
-    <a href="<%= edit_user_url(@user) %>">Edit</a>
-    <a href="<%= new_user_place_url(@user) %>">Add a Place </a>
+
+
+  </div>
+
+  <form action="<%= edit_user_url(@user) %>" method="get">
+    <button class="user-edit<%= mine %>" type="submit"> Edit </button>
+  </form>
+
+  <form action="<%= new_user_place_url(@user) %>" method="get">
+    <button class="user-edit<%= mine %>" type="submit"> Add Place</button>
+  </form>
+
+
+
+  <div class="requests">
+  <h2>Requests</h2>
+
+   <% if current_user && @user.id == current_user.id %>
+   <ul>
+     <% @user.requests.each do |request| %>
+
+       <% if request.approved == nil %>
+         <li><%= "#{request.place.title}, #{request.start_date}, #{request.end_date}" %>
+             <%= button_to "Approve",approve_request_url(request),method: :put %>
+             <%= button_to "Deny", deny_request_url(request),method: :put %>
+           <%end%>
+           </li>
+           <br>
+       <% end %>
+   </ul>
+
+   <% end %>
+
+  </div>
+
+</div>
+
+<div class="content-main">
+
+  <% unless @user.places.empty? %>
+  <div class="places">
+
+    <h2> <%= @user.fname.capitalize %>'s Places </h2>
+      <ul>
+        <% @user.places.each do |place| %>
+          <a href="<%= place_url(place) %>"><li><%= place.title %>
+            <img class="place" src="<%= place.place_pics.first.picture.url(:small) %>"></li></a>
+        <% end %>
+      </ul>
+  </div>
   <% end %>
 
-</div>
-<% unless @user.places.empty? %>
-<div>
-  
-  <h2> <%= @user.fname.capitalize %>'s Places </h2>
-    <ul>
-      <% @user.places.each do |place| %>
-        <a href="<%= place_url(place) %>"><li><%= place.title %>
-          <img class="place" src="<%= place.place_pics.first.picture.url(:small) %>"></li></a>
-      <% end %>
-    </ul>
-</div>
-<% end %>
-
-<div class="requests">
-<h2>Requests</h2>
-
- <% if current_user && @user.id == current_user.id %>
- <ul>
-   <% @user.requests.each do |request| %>
-
-     <% if request.approved == nil %>
-       <li><%= "#{request.place.title}, #{request.start_date}, #{request.end_date}" %>
-           <%= button_to "Approve",approve_request_url(request),method: :put %>
-           <%= button_to "Deny", deny_request_url(request),method: :put %>
-         <%end%>
-         </li>
-         <br>
-     <% end %>
- </ul>
-   
- <% end %>
- 
- <br>
- <br>
- 
- <h2>Pending Requests</h2>
- <% if current_user && @user.id == current_user.id %>
- <ul>
-   <% @user.made_requests.each do |request| %>
-     <% if request.approved == true %>
-       <% a = "Approved"%>
-     <%elsif request.approved == false%>
-       <% a = "Denied"%>
-     <%else%>
-       <% a = "Waiting" %>
-     <%end%>
- 
-       <li><%= "#{request.place.title}, #{a}" %></li>
-     <% end %>
- </ul>
-  
- <% end %>
- 
-</div>
 
 
-</main>
+  <div class="pending-requests">
+
+   <h2>Pending Requests</h2>
+   <% if current_user && @user.id == current_user.id %>
+   <ul>
+     <% @user.made_requests.each do |request| %>
+       <% if request.approved == true %>
+         <% a = "Approved"%>
+       <%elsif request.approved == false%>
+         <% a = "Denied"%>
+       <%else%>
+         <% a = "Waiting" %>
+       <%end%>
+
+         <li><%= "#{request.place.title}, #{a}" %></li>
+       <% end %>
+   </ul>
+
+   <% end %>
+
+  </div>
+
+
+
 
   <h2>Reviews</h2>
     <ul>
@@ -94,3 +108,6 @@
       <% end %>
     </ul>
   <a href="<%= new_user_review_url(@user) %>">Make a review</a>
+
+
+</div>

@@ -1,16 +1,30 @@
+<ul>
+  <li class="interc-1 to-edit"> <strong>First Name:</strong> <%= user.escape("fname") %></li>
+
+  <li class="interc-2 to-edit"><strong>Last Name:</strong> <%= user.escape("lname") %></li>
+
+  <li class="interc-1 to-edit"> <strong>Education: </strong> <%= user.escape("education")%></li>
+
+</ul>
+
+<section id="modal">
+
 <form>
-<li>
-  First Name:<input name="user[fname]" value="<%= user.escape('fname') %>"
-</li>
 
-<li>
-  Last Name:<input name="user[lname]" value="<%=user.escape('lname')%>">
-</li>
 
-<li>
-  Education:<input name="user[education]" value="<%=user.escape('education')%>">
-</li>
+  <strong>First Name:</strong><input name="user[fname]" value="<%= user.escape('fname') %>"
+
+
+
+  <strong>Last Name:</strong><input name="user[lname]" value="<%=user.escape('lname')%>">
+
+
+
+  <strong>Education:</strong><input name="user[education]" value="<%=user.escape('education')%>">
+
+
 
 <input type="submit">
 
 </form>
+</section>
