@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base
   attr_reader :password
 
-  has_attached_file :picture, styles: {small: '60x60#', large: '200x200#'}
+  has_attached_file :picture, styles: {small: '60x60#', large: '200x200#'}, default_url: "/images/missing.jpg"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
-  
+
   validates :password_digest, presence: true
   validates :password, length:{minimum: 6, allow_nil: true}
   validates :session_token, presence: true, uniqueness: true
@@ -11,17 +11,17 @@ class User < ActiveRecord::Base
   validates :fname, presence: true
 
   before_validation :ensure_session_token
-  
+
   before_validation :ensure_picture
 
   has_many :places, foreign_key: :owner_id, dependent: :destroy
-  
+
   has_many :requests, through: :places
   has_many :made_requests,class_name: "Request",foreign_key: :applicant_id, dependent: :destroy
-  
+
   has_many :made_reviews, class_name: "Review", foreign_key: :maker_id
   has_many :reviews, as: :reviewable
-  
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
@@ -51,14 +51,14 @@ class User < ActiveRecord::Base
      user = User.find_by_email(email)
      user.try(:is_password?, password) ? user : nil
   end
-  
+
   def ensure_picture
     self.picture ||= proccess_uri"http://goo.gl/DegTzj"
   end
 
   def self.find_or_create_by_fb(auth_hash)
     user = self.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
-    
+
     unless user
       user = self.create!(
         uid: auth_hash[:uid],
@@ -69,20 +69,20 @@ class User < ActiveRecord::Base
         password_digest: SecureRandom::urlsafe_base64(16)
       )
     end
-    
+
     user
   end
-  
+
   private
-  
+
   def self.process_uri(uri)
     require "open-uri"
     require 'open_uri_redirections'
-    
+
     open(uri, :allow_redirections => :safe) do |r|
       r.base_uri.to_s
     end
   end
-    
+
 
 end

@@ -185,4 +185,10 @@ header li:hover{
   cursor: pointer;
   box-shadow: 2px 2px 2px #888888;
 
-};
+}
+
+.content {
+  background-color:white;
+  height:1000px;
+}
+

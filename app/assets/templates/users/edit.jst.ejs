@@ -1,30 +1,58 @@
-<ul>
-  <li class="interc-1 to-edit"> <strong>First Name:</strong> <%= user.escape("fname") %></li>
+ <script>
+ $('#info li:nth-child(odd)').addClass('interc-1');
+ </script>
 
-  <li class="interc-2 to-edit"><strong>Last Name:</strong> <%= user.escape("lname") %></li>
+ <%
+  var showing = function (str,human) {
+    var attrib = user.escape(str)
 
-  <li class="interc-1 to-edit"> <strong>Education: </strong> <%= user.escape("education")%></li>
+    if (attrib!== null && attrib !== "") {
+      return "<li class='to-edit'><strong>" + human + ":</strong> " + attrib + "</li>"
+    }
+  };
+
+%>
+
+
+<h2 class="title">About me</h2>
+<ul id="info">
+
+  <%=showing("fname","First Name")%>
+
+  <%=showing("lname","Last Name")%>
+
+  <%=showing("education","Education")%>
+
+  <%=showing("job","Job")%>
 
 </ul>
 
+
+
+
 <section id="modal">
 
-<form>
+<form class="edit" id="edit-user">
 
 
-  <strong>First Name:</strong><input name="user[fname]" value="<%= user.escape('fname') %>"
-
-
-
-  <strong>Last Name:</strong><input name="user[lname]" value="<%=user.escape('lname')%>">
+  <label for="fname"><strong>First Name:</strong></label><input name="user[fname]" type="text" id="fname" value="<%= user.escape('fname') %>">
 
 
 
-  <strong>Education:</strong><input name="user[education]" value="<%=user.escape('education')%>">
+  <label for="lname"><strong>Last Name:</strong></label><input name="user[lname]" type="text" id="lname" value="<%=user.escape('lname')%>">
 
 
 
-<input type="submit">
+  <label for="education"><strong>Education:</strong></label><textarea name="user[education]" id="education" ><%=user.escape('education')%></textarea>
 
+
+  <label for="job"><strong>Job:</strong></label><input name="user[job]" type="text" id="lname" value="<%=user.escape('job')%>">
+
+
+  <button type="submit" id="edit-user"> Apply Changes </button>
+  <button id="cancel" type="cancel">Cancel</button>
 </form>
+
 </section>
+
+

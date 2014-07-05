@@ -6,7 +6,11 @@ class PlacesController < ApplicationController
 
   def create
     @place = current_user.places.new(place_params)
-    @place.place_pics.new(picture: params[:first_pic][:picture])
+    if params[:first_pic]
+      @place.place_pics.new(picture: params[:first_pic][:picture])
+    else
+      @place.place_pics.new()
+    end
 
     if @place.save
       redirect_to :root #place_url(@place)
@@ -19,8 +23,8 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
   end
-  
-  def index 
+
+  def index
     @places = Place.all
   end
 
@@ -39,7 +43,7 @@ class PlacesController < ApplicationController
       render :edit
     end
   end
-  
+
   def block
     @place = current_user.places.find(params[:id])
     @reserve_date=@place.reserved_dates.new(block_params)
@@ -48,14 +52,14 @@ class PlacesController < ApplicationController
     else
       flash[:errors] = @place.errors.full_messages
       render :edit
-    end 
+    end
   end
 
   private
   def place_params
     params.require(:place).permit(:title, :kind, :max_guest, :price, :bed_type, :num_bathrooms, :num_beds, :country, :city, :neighborhood, :address, :picture)
   end
-  
+
   def block_params
     params.require(:block).permit(:day)
   end

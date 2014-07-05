@@ -1,8 +1,32 @@
-<ul>
-  <li class="interc-1 to-edit"> <strong>First Name:</strong> <%= user.escape("fname") %></li>
+ <script>
+ $('#info li:nth-child(odd)').addClass('interc-1');
+ </script>
 
-  <li class="interc-2 to-edit"><strong>Last Name:</strong> <%= user.escape("lname") %></li>
+ <%
+  var showing = function (str,human) {
+    var attrib = user.escape(str)
 
-  <li class="interc-1 to-edit"> <strong>Education: </strong> <%= user.escape("education")%></li>
+    if (attrib!== null && attrib !== "") {
+      return "<li class='to-edit'><strong>" + human + ":</strong> " + attrib + "</li>"
+    }
+  };
+
+%>
+
+
+<h2 class="title">About me</h2>
+<ul id="info">
+
+  <%=showing("fname","First Name")%>
+
+  <%=showing("lname","Last Name")%>
+
+  <%=showing("education","Education")%>
+
+  <%=showing("job","Job")%>
 
 </ul>
+
+
+
+

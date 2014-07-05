@@ -7,6 +7,7 @@
   <div class="info <%= mine %>">
     <script>
     $(document).ready(function () {
+
       var id = parseInt(location.pathname.split("/")[2]);
       var user = new App.Models.User({id: id});
       var view = new App.Views.UserShow({model: user})
@@ -16,20 +17,49 @@
         }
       })
 
-    })
-    </script>
+      $("button#edit").on("click", function (event) {
+        console.log("test");
+        view.open = true
+        $(".info").prepend(view.render().$el);
+      })
 
+    })
+
+
+    </script>
 
 
   </div>
 
-  <form action="<%= edit_user_url(@user) %>" method="get">
-    <button class="user-edit<%= mine %>" type="submit"> Edit </button>
-  </form>
+
+  <button  id="edit" class="user-edit<%= mine %>" type="submit"> Edit </button>
+
 
   <form action="<%= new_user_place_url(@user) %>" method="get">
     <button class="user-edit<%= mine %>" type="submit"> Add Place</button>
   </form>
+
+  <% unless @user.places.empty? %>
+
+
+    <h2 class="title"> <%= @user.fname.capitalize %>'s Places </h2>
+    <div class="places">
+      <ul>
+        <% @user.places.each do |place| %>
+        <div class="place-pic">
+          <li>
+
+            <a href="<%= place_url(place) %>">
+              <h2><%= place.title %></h2>
+
+              <img class="place" src="<%= place.place_pics.first.picture.url(:small) %>">
+            </a>
+          </li>
+        </div>
+        <% end %>
+      </ul>
+  </div>
+  <% end %>
 
 
 
@@ -54,25 +84,6 @@
 
   </div>
 
-</div>
-
-<div class="content-main">
-
-  <% unless @user.places.empty? %>
-  <div class="places">
-
-    <h2> <%= @user.fname.capitalize %>'s Places </h2>
-      <ul>
-        <% @user.places.each do |place| %>
-          <a href="<%= place_url(place) %>"><li><%= place.title %>
-            <img class="place" src="<%= place.place_pics.first.picture.url(:small) %>"></li></a>
-        <% end %>
-      </ul>
-  </div>
-  <% end %>
-
-
-
   <div class="pending-requests">
 
    <h2>Pending Requests</h2>
@@ -94,6 +105,16 @@
    <% end %>
 
   </div>
+
+</div>
+
+<div class="content-main">
+
+
+
+
+
+
 
 
 

@@ -1,9 +1,6 @@
-# User.create!([
-#   {email: "jorar91@gmail.com", password_digest: "$2a$10$lRyAQJZICyfUp5vv09lAQOWijYhQoX2yycmQhcnTtCMZBkXNzJVam", session_token: "BTicO8AJY7KDF8GOJZ-wfw", fname: "Teo", lname: "", education: "gives hand", job: "none", sex: "M", picture: "http://goo.gl/gCttuv"},
-#   {email: "quira@gmail.com", password_digest: "$2a$10$5UmJ0go1gqkSOyCttaNpauUAi8VT.29Na4H2Ll.6i/SokcWBWZvTi", session_token: "a-g-pgV4vXecWpGJZEIHzA", fname: "quira", lname: "", education: nil, job: nil, sex: nil, picture: nil},
-#   {email: "lolo@gmail.com", password_digest: "$2a$10$9QxAtW5iIO9/QwdVH8DCR.sIgct13G4At.xOEssCGlJREdHvp360e", session_token: "IMZ48vMEJCNp3G1gc7h7Vg", fname: "Lolo", lname: "", education: nil, job: nil, sex: nil, picture: "http://goo.gl/DegTzj"},
-#   {email: "otherdog@gmail.com", password_digest: "$2a$10$TOLyroWXgfaWbrvxWOEeZetE0flmh0sPlbwnYC7xlew8b8xF0YYLm", session_token: "TivXryqkmkxZhx7iMMhmYg", fname: "other dog", lname: "", education: nil, job: nil, sex: nil, picture: "http://goo.gl/DegTzj"}
-# ])
+User.create!([
+   {email: "jorar91@gmail.com", password_digest: "$2a$10$lRyAQJZICyfUp5vv09lAQOWijYhQoX2yycmQhcnTtCMZBkXNzJVam", session_token: "BTicO8AJY7KDF8GOJZ-wfw", fname: "Teo", lname: "", education: "gives hand", job: "none", sex: "M", picture: "https://images.akc.org/breeds/action_images/labrador_retriever.jpg"}])
+
 #
 #
 # User.first.places.create!([

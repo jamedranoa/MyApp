@@ -6,7 +6,9 @@ App.Views.UserShow = Backbone.View.extend({
 
   events: {
     "click li.to-edit": "beginEditing",
-    "submit form": "endEditing"
+    "click .title": "beginEditing",
+    "submit form": "endEditing",
+    "click #modal": "endEditing",
   },
 
   initialize: function (options) {
@@ -16,19 +18,36 @@ App.Views.UserShow = Backbone.View.extend({
 
   beginEditing: function () {
 
-    this.model.id === Window.currentUserId ? this.open = true : this.open = false;
+    if(this.model.id === Window.currentUserId){
+        this.open = true
+        this.$el.addClass("mine")
+      }
+    this.render();
+  },
+
+  cancelEditing: function () {
+    this.open = false
     this.render();
   },
 
   endEditing: function (event) {
-    event.preventDefault();
-    this.open = false;
+    if (event.target.id === "cancel"){
+      event.preventDefault();
+      this.open=false;
+      this.render();
+    }
 
-    var params = $(event.currentTarget).serializeJSON();
-    this.model.set(params["user"]);
-    this.model.save();
+    if (event.target.id === "modal" || event.type === "submit") {
+      event.preventDefault();
+      var params = $("form").serializeJSON();
+      this.model.set(params["user"]);
+      this.model.save();
+      this.open = false;
+      this.render();
+    }
 
-    this.render();
+
+
   },
 
   render: function () {
