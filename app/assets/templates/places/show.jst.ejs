@@ -1,9 +1,28 @@
+ <script>
+ $('#info li:nth-child(odd)').addClass('interc-1');
+ </script>
 
+ <%
+  var showing = function (str,human) {
+    var attrib = place.escape(str)
 
-<li>Title: <%= place.escape("title") %></li>
-<li>Kind: <%= place.escape("kind") %></li>
-<li>guests: <%= place.escape("max_guest") %></li>
-<li>beds: <%= place.escape("num_beds") %></li>
-<li>Country: <%= place.escape("country") %></li>
-<li>City: <%= place.escape("city") %></li>
-<li>Neighborhood: <%= place.escape("neighborhood") %></li>
+    if (attrib!== null && attrib !== "") {
+      return "<li class='to-edit'><strong>" + human + ":</strong> " + attrib + "</li>"
+    }
+  };
+
+%>
+
+<div class="place-info">
+  <div class="place-pics">
+    <img src="<%= place.get("pictures")[0].url%>">
+  </div>
+  <ul>
+    <%=showing("title","Title")%>
+    <%=showing("kind","Kind")%>
+    <%=showing("max_guest","acomodates")%>
+    <%=showing("price","Price")%>
+    <%=showing("bed_type","Bed")%>
+    <%=showing("max_guest","Bathrooms")%>
+  <ul>
+</ul>

@@ -1,3 +1,16 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.side{
+  border:1px solid black;
+  width:65%;
+}
+
+.place-info ul{
+  border:1px solid black;
+  max-width:300px;
+}
+
+.place-pics img{
+  width:500px ;
+}

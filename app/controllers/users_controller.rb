@@ -26,6 +26,7 @@ class UsersController < ApplicationController
   def show
     if params.include?(:id)
       @user = User.find(params[:id])
+      @reviews= Kaminari.paginate_array(@user.reviews.reverse).page(params[:page]).per(5)
     else
       redirect_to user_url(current_user)
     end

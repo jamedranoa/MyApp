@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'thin'
 
+gem 'kaminari'
+
 gem 'backbone-on-rails'
 
 gem 'open_uri_redirections', '~> 0.1.4'

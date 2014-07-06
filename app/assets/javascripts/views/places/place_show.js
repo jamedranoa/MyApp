@@ -1,5 +1,5 @@
 App.Views.PlaceShow = Backbone.View.extend({
-  tagName: "ul",
+
   template: function () {
     return this.open ? JST["places/edit"] : JST["places/show"];
   },

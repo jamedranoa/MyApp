@@ -130,7 +130,6 @@
 
   <div class="content-main">
 
-
     <div class="intro">
         <h1 class="hi"> Hi I'm <%= @user.fname %></h1>
         <h2><strong>Member Since:</strong> <%= @user.member_since %></h2>
@@ -144,16 +143,20 @@
 <% end %>
 
   <h2 id="reviews">Reviews<light>(<%=@user.reviews.length%>)</light></h2>
+
+
+  <%= paginate @reviews %>
   <div class="reviews">
 
     <ul>
-      <% @user.reviews.each do |review| %>
+      <% @reviews.each do |review| %>
         <li>
           <%= render review  %>
         </li>
       <% end %>
     </ul>
-  <a href="<%= new_user_review_url(@user) %>">Make a review</a>
-
   </div>
+
+
+
 </div>

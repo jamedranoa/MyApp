@@ -1,5 +1,7 @@
 class Api::PlacesController < ApplicationController
 
+  wrap_parameters false
+
   def index
 
     @places = Place.all
@@ -8,7 +10,7 @@ class Api::PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
-    render json: @place
+    render :show
   end
 
   def update

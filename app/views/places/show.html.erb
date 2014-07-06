@@ -1,5 +1,5 @@
-<img src="<%= @place.place_pics.first.picture.url(:large) %>">
-<ul class="info">
+
+
   <script>
   $(document).ready(function () {
     var id = parseInt(location.pathname.split("/")[2]);
@@ -7,14 +7,18 @@
     var view = new App.Views.PlaceShow({model: place})
     place.fetch({
       success: function () {
-        $(".info").append(view.render().$el);
+        $(".side").prepend(view.render().$el);
       }
     })
 
   })
   </script>
 
-</ul>
+<div class="side">
+
+</div>
+
+<!-- <img src="<%= @place.place_pics.first.picture.url(:large) %>">
 
 <h2>Reserved Dates</h2>
 <ul>
@@ -46,4 +50,4 @@
 
 </div>
 
-<a href="<%= new_place_review_url(@place) %>">Make a review</a>
+<a href="<%= new_place_review_url(@place) %>">Make a review</a> -->
