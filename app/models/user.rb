@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def member_since
+    self.created_at.to_date.to_formatted_s(:long)
+  end
+
   private
 
   def self.process_uri(uri)
@@ -83,6 +87,8 @@ class User < ActiveRecord::Base
       r.base_uri.to_s
     end
   end
+
+
 
 
 end

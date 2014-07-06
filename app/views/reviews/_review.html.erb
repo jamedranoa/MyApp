@@ -1,0 +1,21 @@
+<div class="review group">
+
+  <div class="info-auth group">
+
+    <div class="pic-auth">
+      <a href="<%= user_url(review.maker) %>">
+      <img src="<%= review.maker.picture.url(:small) %>">
+      </a>
+    </div>
+
+    <div class="inf-auth">
+      <h2 class="rev"><a href="<%= user_url(review.maker) %>"><%= "#{review.maker.fname} #{review.maker.lname}" %></a></h2>
+      <h4><%= time_ago_in_words(review.created_at)%> ago</h4>
+    </div>
+  </div>
+
+  <div class="revw-text ">
+    <article><%= review.body %></article>
+  </div>
+
+</div>

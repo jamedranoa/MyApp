@@ -1,5 +1,7 @@
  <script>
  $('#info li:nth-child(odd)').addClass('interc-1');
+
+
  </script>
 
  <%
@@ -47,6 +49,8 @@
 
 
   <label for="job"><strong>Job:</strong></label><input name="user[job]" type="text" id="lname" value="<%=user.escape('job')%>">
+
+  <label for="intro"><strong>Introduction:</strong></label><textarea name="user[intro]" id="intro" ><%=user.escape('intro')%></textarea>
 
 
   <button type="submit" id="edit-user"> Apply Changes </button>

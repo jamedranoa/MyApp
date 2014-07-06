@@ -13,7 +13,11 @@
       var view = new App.Views.UserShow({model: user})
       user.fetch({
         success: function () {
-          $(".info").prepend(view.render().$el);
+          view = view.render()
+          $(".intro").append(view.$el.children("p").clone().removeClass("hidden"))
+          $(".info").prepend(view.$el);
+
+
         }
       })
 
@@ -22,6 +26,12 @@
         view.open = true
         $(".info").prepend(view.render().$el);
       })
+
+      $("p").bind("DOMSubtreeModified", function(event){
+        alert.log("test")
+      })
+
+
 
     })
 
@@ -35,9 +45,7 @@
   <button  id="edit" class="user-edit<%= mine %>" type="submit"> Edit </button>
 
 
-  <form action="<%= new_user_place_url(@user) %>" method="get">
-    <button class="user-edit<%= mine %>" type="submit"> Add Place</button>
-  </form>
+
 
   <% unless @user.places.empty? %>
 
@@ -60,6 +68,9 @@
       </ul>
   </div>
   <% end %>
+  <form action="<%= new_user_place_url(@user) %>" method="get">
+    <button class="user-edit<%= mine %>" type="submit"> Add Place</button>
+  </form>
 
 
 
@@ -108,27 +119,28 @@
 
 </div>
 
-<div class="content-main">
+  <div class="content-main">
 
 
+    <div class="intro">
+        <h1> Hi I'm <%= @user.fname %></h1>
+        <h2><strong>Member Since:</strong> <%= @user.member_since %></h2>
+    </div>
 
+  <div class="new-review">
+    <%= render "reviews/form",reviewable_id: params[:user_id], reviewable_type: "User" %>
+  </div>
 
-
-
-
-
-
-
-  <h2>Reviews</h2>
+  <div class="reviews">
+    <h2>Reviews<light>(<%=@user.reviews.length%>)</light></h2>
     <ul>
       <% @user.reviews.each do |review| %>
         <li>
-          <%= review.maker.fname %>
-            <p><%= review.body  %><p>
+          <%= render review  %>
         </li>
       <% end %>
     </ul>
   <a href="<%= new_user_review_url(@user) %>">Make a review</a>
 
-
+  </div>
 </div>

@@ -1,22 +1,26 @@
 class ReviewsController < ApplicationController
-  
+
   def new
   end
-  
+
   def create
     @review = current_user.made_reviews.new(review_params)
     if @review.save
-      redirect_to current_user
+      if request.xhr?
+          render partial: "comment", locals: {comment: @comment}
+      else
+          redirect_to @review.reviewable
+      end
     else
       flash[:errors] = @review.errors.full_messages
-      render :new
+      redirect_to user_url(review_params.reviewable_id)
     end
   end
-  
-  private 
-  
+
+  private
+
   def review_params
     params.require(:review).permit(:body, :score, :reviewable_id, :reviewable_type)
   end
-  
+
 end

@@ -8,7 +8,7 @@ App.Views.UserShow = Backbone.View.extend({
     "click li.to-edit": "beginEditing",
     "click .title": "beginEditing",
     "submit form": "endEditing",
-    "click #modal": "endEditing",
+    "click #modal": "endEditing"
   },
 
   initialize: function (options) {

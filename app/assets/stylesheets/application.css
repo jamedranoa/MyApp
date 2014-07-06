@@ -171,19 +171,23 @@ header li:hover{
 }
 
 .content button{
-    margin-top: 5px ;
-    border-radius: 10px;
-    background-color: black;
-    padding:3px 10px;
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
+
+  margin-top: 5px ;
+  border-radius: 10px;
+  background-color: black;
+  padding:3px 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+
+
 }
 
 .content button:hover{
   background-color:rgb(70, 68, 68);
   cursor: pointer;
   box-shadow: 2px 2px 2px #888888;
+
 
 }
 

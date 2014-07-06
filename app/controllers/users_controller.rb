@@ -30,11 +30,11 @@ class UsersController < ApplicationController
       redirect_to user_url(current_user)
     end
   end
-  
+
   def index
     @users = User.all
   end
-  
+
   def edit
     @user = current_user
   end
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :fname, :password, :lname,:education,:job, :picture, :sex)
+    params.require(:user).permit(:email, :fname, :password, :lname,:education,:job, :picture, :sex, :intro)
   end
 
 
