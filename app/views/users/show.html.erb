@@ -27,9 +27,18 @@
         $(".info").prepend(view.render().$el);
       })
 
-      $("p").bind("DOMSubtreeModified", function(event){
-        alert.log("test")
-      })
+
+      $("form.new-review").on("ajax:success", function(event, data){
+
+          $(".reviews").prepend(data);
+          var prev = $("light").text();
+          var num = parseInt(prev.slice(1,prev.length-1))+1;
+          var str = "("+num+")";
+          $("light").html(str);
+          this.reset();
+
+        });
+
 
 
 
@@ -123,16 +132,20 @@
 
 
     <div class="intro">
-        <h1> Hi I'm <%= @user.fname %></h1>
+        <h1 class="hi"> Hi I'm <%= @user.fname %></h1>
         <h2><strong>Member Since:</strong> <%= @user.member_since %></h2>
     </div>
+<% if current_user && @user.id != current_user.id %>
+  <div class="new-review group">
+    <h2>Make a Review</h2>
 
-  <div class="new-review">
-    <%= render "reviews/form",reviewable_id: params[:user_id], reviewable_type: "User" %>
+    <%= render "reviews/form",reviewable_id: params[:id], reviewable_type: "User" %>
   </div>
+<% end %>
 
+  <h2 id="reviews">Reviews<light>(<%=@user.reviews.length%>)</light></h2>
   <div class="reviews">
-    <h2>Reviews<light>(<%=@user.reviews.length%>)</light></h2>
+
     <ul>
       <% @user.reviews.each do |review| %>
         <li>

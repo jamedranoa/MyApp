@@ -1,26 +1,24 @@
-<form action="<%= reviews_url %>" method="post" >
+<form class="new-review" action="<%= reviews_url %>" method="post" data-remote="true" >
   <input
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
-     
-  <input type="hidden" 
-    name="review[reviewable_id]" 
+
+  <input type="hidden"
+    name="review[reviewable_id]"
     value="<%= reviewable_id %>">
 
   <input type="hidden"
     name="review[reviewable_type]"
     value="<%= reviewable_type %>">
-    
-  <label for="body">
-    Review
-    <textarea name="review[body]" id="body"></textarea>
-  </label>
-  
-  <label for="score">
-    Score
-    <input type="range" name="review[score]" id="score" min="1" max="5">
-  </label>
-  
-  <input type="submit" value="Submit">
+  <div class="form-review group">
+  <div class="pic-curr"><img src="<%= current_user.picture.url(:large) %>"></div>
+  <textarea name="review[body]" id="body"></textarea>
+  </div>
+
+  <input type="hidden" name="review[score]" value="4">
+
+
+
+  <button type="submit">Submit</button>
 </form>

@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @review = current_user.made_reviews.new(review_params)
     if @review.save
       if request.xhr?
-          render partial: "comment", locals: {comment: @comment}
+          render partial: "review", locals: {review: @review}
       else
           redirect_to @review.reviewable
       end

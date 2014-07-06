@@ -15,6 +15,8 @@
 .content-main{
   float: right;
   width: 60%;
+  height:900px;
+  overflow:hidden;
 }
 
 
@@ -224,7 +226,6 @@ button.mine{
 }
 
 .content-main{
-  border:1px solid blue;
   margin-right: 40px;
 }
 
@@ -247,17 +248,21 @@ button.mine{
 
 
 .reviews{
-  margin-top: 60px;
+  margin-top: 20px;
+  height:500px;
+
+  overflow-y:auto;
+  overflow-x:hidden;
 }
 
-.reviews h2{
+#reviews{
   display:inline-block;
   font-size:25px;
-  margin-bottom:20px;
+  margin-top:60px;
   font-weight:bold ;
 }
 
-.reviews h2 light{
+#reviews light{
   font-size:20px;
   font-weight:none;
   color: gray;
@@ -323,6 +328,39 @@ button.mine{
   overflow-x:hidden;
   word-wrap: break-word;
 }
+
+.new-review h2{
+  font-size:25px;
+  font-weight:bold;
+  margin-bottom:20px;
+  margin-top:20px;
+}
+
+.pic-curr img{
+  float:left;
+  width:80px;
+  border-radius:100px;
+}
+
+.new-review textarea{
+  display:block;
+  margin-left:20px;
+  margin-top:0px;
+  float:left;
+  border:1px solid black;
+  display:block;
+  height:150px;
+  width:70%;
+}
+
+.new-review button{
+  display:block;
+  margin-left:440px;
+
+}
+
+
+
 
 
 
