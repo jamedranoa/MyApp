@@ -1,33 +1,29 @@
 <script>
-$(function() {
-  $('.datepicker').datepicker();
-});
+
 </script>
 
-<form action="<%= place_requests_url(id) %>" method="post">
+<form action="<%= place_requests_url(id) %>" method="post" class="request" data-remote="true">
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
 
-  <!-- <label for="start_date">
+  <label for="start_date">
     Check in
-    <input type="date" name="request[start_date]" id="start_date">
+    <input type="text" name="request[start_date]" class="datepicker">
   </label>
 
   <label for="end_date">
     Check out
-    <input type="date" name="request[end_date]" id="end_date">
-  </label> -->
+    <input type="text" name="request[end_date]" class="datepicker">
+  </label>
 
-    <label>
-      <input type="text" id="datepicker">
-    </label>
+
 
   <label for="message">
     Message
     <textarea name="request[message]" id="message"></textarea>
   </label>
 
-  <input type="submit" value="Make Request">
+  <button>Make Request</button>
 
 </form>

@@ -11,7 +11,15 @@
       }
     });
 
-    $("#datepicker").datepicker();
+    $(".datepicker").datepicker({ dateFormat: 'dd-mm-yy'})
+
+    $("form.request").on("ajax:success", function(event, data){
+
+        $(".right-side").prepend(data);
+        this.reset();
+
+      });
+
 
 
   })
@@ -21,10 +29,12 @@
 
 </div>
 
+
 <div class="right-side">
-
-  <%= render "requests/form", id: params[:id]%>
-
+  <h2>Make a request</h2>
+  <div class=new-request>
+    <%= render "requests/form", id: params[:id]%>
+  </div>
 </div>
 
 <!-- <img src="<%= @place.place_pics.first.picture.url(:large) %>">

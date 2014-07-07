@@ -4,10 +4,15 @@ class RequestsController < ApplicationController
   end
 
   def create
+
     @request = current_user.made_requests.new(request_params)
     @request.place = Place.find(params[:place_id])
     if @request.save
-      redirect_to "/"
+      if request.xhr?
+          render partial: "success"
+      else
+          redirect_to "/"
+      end
     else
       flash[:errors] = @request.errors.full_messages
       render :new
