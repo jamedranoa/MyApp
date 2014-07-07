@@ -5,8 +5,9 @@ App.Views.PlaceShow = Backbone.View.extend({
   },
 
   events: {
-    "dblclick li": "beginEditing",
-    "submit form": "endEditing"
+    "click #edit": "beginEditing",
+    "submit form": "endEditing",
+    "click #modal": "endEditing"
   },
 
   initialize: function (options) {
@@ -16,19 +17,25 @@ App.Views.PlaceShow = Backbone.View.extend({
 
   beginEditing: function () {
 
-    this.model.id === Window.currentUserId ? this.open = true : this.open = false;
+    this.model.get("owner_id") === Window.currentUserId ? this.open = true : this.open = false;
     this.render();
   },
 
   endEditing: function (event) {
-    event.preventDefault();
-    this.open = false;
+    if (event.target.id === "cancel"){
+      event.preventDefault();
+      this.open=false;
+      this.render();
+    }
 
-    var params = $(event.currentTarget).serializeJSON();
-    this.model.set(params["place"]);
-    this.model.save();
-
-    this.render();
+    if (event.target.id === "modal" || event.type === "submit") {
+      event.preventDefault();
+      var params = $("form").serializeJSON();
+      this.model.set(params["place"]);
+      this.model.save();
+      this.open = false;
+      this.render();
+    }
   },
 
   render: function () {

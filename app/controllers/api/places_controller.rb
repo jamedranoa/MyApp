@@ -17,7 +17,7 @@ class Api::PlacesController < ApplicationController
     @place = current_user.places.find(params[:id])
 
     if @place.update(place_params)
-      render json: @place
+      render :show
     else
       render :json => @comment.errors, :status => :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class Api::PlacesController < ApplicationController
   private
 
   def place_params
-    params.require(:place).permit(:title, :kind, :max_guest, :price, :bed_type, :num_bathrooms, :num_beds, :country, :city, :neighborhood, :address, :picture)
+    params.require(:place).permit(:title, :kind, :max_guest, :price, :bed_type, :num_bathrooms, :num_beds, :country, :city, :neighborhood, :address, :description)
   end
 
 end

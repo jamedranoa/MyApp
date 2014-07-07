@@ -1,31 +1,69 @@
-<<<<<<< Local Changes
+
  <script>
- $('#info li:nth-child(odd)').addClass('interc-1');
+ $('ul li:nth-child(odd)').addClass('interc-1');
  </script>
 
+
+
+<script>
+    $(function(){
+      $("#slides").slidesjs({
+        width:460,
+        height:350,
+        play: {
+              active: false,
+                // [boolean] Generate the play and stop buttons.
+                // You cannot use your own buttons. Sorry.
+              effect: "slide",
+                // [string] Can be either "slide" or "fade".
+              interval: 5000,
+                // [number] Time spent on each slide in milliseconds.
+              auto: true,
+                // [boolean] Start playing the slideshow on load.
+              swap: false,
+                // [boolean] show/hide stop and play buttons
+              pauseOnHover: true,
+                // [boolean] pause a playing slideshow on hover
+              restartDelay: 2500
+                // [number] restart delay on inactive slideshow
+            }
+      });
+    });
+  </script>
  <%
   var showing = function (str,human) {
     var attrib = place.escape(str)
 
     if (attrib!== null && attrib !== "") {
-      return "<li class='to-edit'><strong>" + human + ":</strong> " + attrib + "</li>"
+      return "<tr> <th>" + human + ":</th> <td>" + attrib + "</td>"
     }
   };
 
 %>
 
 <div class="place-info">
-  <div class="place-pics">
-    <img src="<%= place.get("pictures")[0].url%>">
+  <h1><%=place.escape("title")%></h1>
+  <div class="place-pics" id>
+    <div id="slides" class="group">
+      <img src="<%= place.get("pictures")[0].url%>">
+      <img src="http://goo.gl/WbYlf2">
+    </div>
   </div>
- <div class="text-info">
-  <ul>
+ <div class="text-info group">
+
+   <div class="description">
+     <h2>About The Place</h2>
+     <p><%= place.escape("description")%></p>
+   </div>
+  <table>
     <%=showing("title","Title")%>
     <%=showing("kind","Kind")%>
     <%=showing("max_guest","acomodates")%>
     <%=showing("price","Price")%>
     <%=showing("bed_type","Bed")%>
+    <%=showing("num_beds","#Beds")%>
     <%=showing("max_guest","Bathrooms")%>
-  <ul>
-</ul>=======
->>>>>>> External Changes
+ </table>
+  </div>
+  <button id="edit">Edit Your Place</button>
+</div>

@@ -1,31 +1,93 @@
 
 
-<form>
-<ul>
-  <li>
-    Title <input type="text" name="place[title]">
-  </li>
-  <li>
-    Kind <input type="text" name="place[kind]">
-  </li>
-  <li>
-    Guests <input type="text" name="place[guests]">
-  </li>
-  <li>
-    Beds <input type="text" name="place[beds]">
-  </li>
-  <li>
-    Country <input type="text" name="place[country]">
-  </li>
-  <li>
-    City <input type="text" name="place[city]">
-  </li>
-  <li>
-    Neighborhood <input type="text" name="place[neighborhood]">
-  </li>
-</ul>
 
-  <input type="submit">
+ <script>
+ $('ul li:nth-child(odd)').addClass('interc-1');
+ </script>
 
+
+<script>
+    $(function(){
+      $("#slides").slidesjs({
+        width:460,
+        height:350,
+        play: {
+              active: false,
+                // [boolean] Generate the play and stop buttons.
+                // You cannot use your own buttons. Sorry.
+              effect: "slide",
+                // [string] Can be either "slide" or "fade".
+              interval: 5000,
+                // [number] Time spent on each slide in milliseconds.
+              auto: true,
+                // [boolean] Start playing the slideshow on load.
+              swap: false,
+                // [boolean] show/hide stop and play buttons
+              pauseOnHover: true,
+                // [boolean] pause a playing slideshow on hover
+              restartDelay: 2500
+                // [number] restart delay on inactive slideshow
+            }
+      });
+    });
+  </script>
+ <%
+  var showing = function (str,human) {
+    var attrib = place.escape(str)
+
+    if (attrib!== null && attrib !== "") {
+      return "<tr> <th>" + human + ":</th> <td>" + attrib + "</td>"
+    }
+  };
+
+%>
+
+<div class="place-info">
+  <h1><%=place.escape("title")%></h1>
+  <div class="place-pics" id>
+    <div id="slides" class="group">
+      <img src="<%= place.get("pictures")[0].url%>">
+      <img src="http://goo.gl/WbYlf2">
+    </div>
+  </div>
+ <div class="text-info group">
+
+   <div class="description">
+     <h2>About The Place</h2>
+     <p><%= place.escape("description")%></p>
+   </div>
+  <table>
+    <%=showing("title","Title")%>
+    <%=showing("kind","Kind")%>
+    <%=showing("max_guest","acomodates")%>
+    <%=showing("price","Price")%>
+    <%=showing("bed_type","Bed")%>
+    <%=showing("max_guest","Bathrooms")%>
+ </table>
+  </div>
+  <button id="edit">Edit Your Place</button>
+</div>
+
+<section id="modal">
+
+<form class="edit" id="edit-place" >
+
+
+  <label for="title"><strong>Tite:</strong></label><input name="place[title]" type="text" id="title" value="<%= place.escape('title') %>">
+
+  <label for="kind"><strong>Kind:</strong></label><input name="place[kind]" type="text" id="kind" value="<%=place.escape('kind')%>">
+
+  <label for="bed-type"><strong>Bed:</strong></label><input name="place[bed_type]" type="text" id="bed-type" value="<%=place.escape('bed_type')%>">
+
+  <label for="num-beds"><strong>#Beds:</strong></label><input name="place[num_beds]" type="text" id="num-beds" value="<%=place.escape('num_beds')%>">
+
+  <label for="max-guest"><strong>Acommodates</strong></label><input name="place[max_guest]" type="text" id="max-guest" value="<%=place.escape('max_guest')%>">
+
+  <label for="description"><strong>About:</strong></label><textarea name="place[description]" id="description" ><%=place.escape('description')%></textarea>
+
+  <button type="submit" id="edit-place"> Apply Changes </button>
+  <button id="cancel" type="cancel">Cancel</button>
 </form>
+
+</section>
 

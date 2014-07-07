@@ -2,15 +2,123 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .side{
-  border:1px solid black;
   width:600px;
+  float:left;
 }
 
-.place-info ul{
+.right-side{
+  border: 1px solid red;
+  margin-top:67px;
+  float:left;
+  max-width:320px  ;
+}
+
+
+.place-info h1{
+  font-size:40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.description{
+  float:left;
+  width:350px;
+}
+
+
+
+.slidesjs-container{
+  margin:0px;
+  width:400px;
+  padding:0px;
+
+}
+
+#slides{
+  display:none;
+  width:495;
+}
+
+#slides a{
+  float:left;
+  display:inline-block;
+}
+
+#slides ul{
+  float:right;
+}
+
+#slides ul li{
+  float:left;
+}
+#slides ul li a{
+  font-size:10px;
+  margin:5px;
+  text-align:center;
+  width:10px;
+  background:gray;
+  color: white;
+  padding:5px;
+  border-radius:200px;
+}
+
+#slides ul li .active{
+  background:black;
+
+}
+
+#slides .slidesjs-navigation{
+  display:block ;
+  background-color:black;
+  color:white;
+  margin-right: 10px;
+  padding:2px 5px;
+  font-size:14px;
+  border-radius:10px;
+}
+
+.description h2{
+  color:white;
+  font-weight: bold;
+  text-align: center;
+  display:block;
+  background:gray;
+  border-top-right-radius:10px;
+  border-top-left-radius:10px;
+
+}
+
+
+
+.text-info {
+  margin-top:20px ;
+}
+
+.text-info table{
+  float: right;
+}
+
+.text-info th{
+  margin:0px;
+  padding:3px 5px;
+  font-weight:bold;
+  font-size: 18px;
+  background:rgb(180, 180, 190);
+  text-align: left;
   border:1px solid black;
-  max-width:300px;
+}
+.text-info td{
+  text-align:right;
+  padding:5px;
+  margin:0px;
+  background:white;
+  border: 1px solid black;
 }
 
 .place-pics img{
-  width:600px ;
+  width:500px ;
+  height:500px;
+}
+
+.place-info button{
+  float:right;
 }
