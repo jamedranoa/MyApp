@@ -82,29 +82,11 @@
   </form>
 
 
+  <% if current_user && current_user.id == @user.id %>
+  <button><a href="<%= user_requests_url(current_user) %>">Requests</a></button>
+  <%end %>
 
-  <div class="requests">
-  <h2>Requests</h2>
-
-   <% if current_user && @user.id == current_user.id %>
-   <ul>
-     <% @user.requests.each do |request| %>
-
-       <% if request.approved == nil %>
-         <li><%= "#{request.place.title}, #{request.start_date}, #{request.end_date}" %>
-             <%= button_to "Approve",approve_request_url(request),method: :put %>
-             <%= button_to "Deny", deny_request_url(request),method: :put %>
-           <%end%>
-           </li>
-           <br>
-       <% end %>
-   </ul>
-
-   <% end %>
-
-  </div>
-
-  <div class="pending-requests">
+  <!-- <div class="pending-requests">
 
    <h2>Pending Requests</h2>
    <% if current_user && @user.id == current_user.id %>
@@ -124,7 +106,7 @@
 
    <% end %>
 
-  </div>
+  </div> -->
 
 </div>
 

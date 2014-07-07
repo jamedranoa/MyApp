@@ -36,6 +36,11 @@ class RequestsController < ApplicationController
     redirect_to user_url(current_user)
   end
 
+  def index
+    @requests = current_user.requests
+
+  end
+
 
   private
   def request_params

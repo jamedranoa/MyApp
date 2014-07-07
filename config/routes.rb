@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
     resources :reviews, only:[:new]
 
+    resources :requests, only:[:index]
+
   end
 
 

@@ -1,0 +1,30 @@
+<style>
+  .minishow img{
+    height:200px;
+    width:200px;
+    border: 2px solid black;
+  }
+  .minishow h3{
+    position:absolute;
+    display:none;
+  }
+
+  .minishow:hover{
+    cursor:pointer;
+    box-shadow: 10px 10px 10px #888888;;
+  }
+
+  .minishow:hover h3{
+    display:block;
+    background:rgba(14, 13, 13, 0.53);
+    color:white;
+    font-weight:bold;
+    width:90px;
+  }
+</style>
+
+<div class="minishow">
+  <h3> <%= place.title %> </h3>
+  <a href="<%= place_url(place) %>"><img src="<%= place.place_pics[0].picture.url(:large) %>"></a>
+
+</div>

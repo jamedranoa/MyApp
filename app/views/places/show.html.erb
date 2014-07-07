@@ -20,13 +20,44 @@
 
       });
 
+    $("form.new-review").on("ajax:success", function(event, data){
+
+        $(".reviews").prepend(data);
+        var prev = $("light").text();
+        var num = parseInt(prev.slice(1,prev.length-1))+1;
+        var str = "("+num+")";
+        $("light").html(str);
+        this.reset();
+
+      });
 
 
   })
   </script>
 
 <div class="side">
+<% if current_user && @place.owner_id != current_user.id %>
+  <div class="new-review group">
+    <h2>Make a Review</h2>
 
+    <%= render "reviews/form",reviewable_id: params[:id], reviewable_type: "Place" %>
+  </div>
+<% end %>
+
+  <h2 id="reviews">Reviews<light>(<%=@place.reviews.length%>)</light></h2>
+
+
+  <%= paginate @reviews %>
+  <div class="reviews">
+
+    <ul>
+      <% @reviews.each do |review| %>
+        <li>
+          <%= render review  %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 
@@ -34,6 +65,10 @@
   <h2>Make a request</h2>
   <div class=new-request>
     <%= render "requests/form", id: params[:id]%>
+  </div>
+  <div class="owner-info">
+    <h3><a href="<%=user_url(@place.owner_id)%>">Host: <%= @place.owner.fname %></a></h3>
+    <a href="<%=user_url(@place.owner_id)%>"><img src="<%= @place.owner.picture.url(:large) %>"><a href="user_url(@place.owner_id)">
   </div>
 </div>
 

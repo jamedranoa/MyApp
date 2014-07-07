@@ -1,7 +1,7 @@
-<h1>Results</h1>
-
+<div class="sample-places">
 <ul>
-  <% @places.each do |place| %>
-    <a href="<%= place_url(place) %>"><li><%= place.title %></li></a>
-  <% end %>
+<% @places.each do |place| %>
+ <li> <%= render "places/minishow", place: place %></li>
+<% end %>
 </ul>
+</div>

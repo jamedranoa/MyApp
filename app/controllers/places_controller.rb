@@ -22,6 +22,7 @@ class PlacesController < ApplicationController
 
   def show
     @place = Place.find(params[:id])
+    @reviews= Kaminari.paginate_array(@place.reviews.reverse).page(params[:page]).per(5)
   end
 
   def index
