@@ -6,6 +6,36 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
+  <script>
+  $(document).ready(function(){
+
+      $(".in").on("click", function(event){
+        event.preventDefault();
+        $("#modal").addClass("is-active");
+        $(".new-session").removeClass("hidden");
+        $(".new-user").addClass("hidden");
+      });
+
+      $(".up").on("click", function(event){
+        event.preventDefault();
+        $("#modal").addClass("is-active");
+        $(".new-user").removeClass("hidden");
+        $(".new-session").addClass("hidden");
+      });
+
+      $("#modal").on("click", function(event){
+        console.log(event)
+        if (event.target.id == "modal") {
+          event.preventDefault();
+          $("#modal").removeClass("is-active");
+          $(".for-up").removeClass("is-active");
+        }
+
+      });
+
+    })
+  </script>
+
 </head>
 <body>
   <header class="header group">
@@ -30,8 +60,8 @@
 
 
           <% else %>
-            <li><%= link_to "Sign In", new_session_url %></li>
-            <li><%= link_to "Sign up", new_user_url %></li>
+            <li class="in"><a href=#>Sign in</a></li>
+            <li class="up"><a href=#>Sign Up</a></li>
           <% end %>
       </ul>
 
@@ -39,50 +69,34 @@
 
 </header>
     <% if !signed_in? %>
-      <div class="sign-in">
-        <h1>Sign In</h1>
+      <section id="modal">
 
-        <form action="<%= session_url %>" method="post">
-          <input
-             name="authenticity_token"
-             type="hidden"
-             value="<%= form_authenticity_token %>">
+         <%= render "sessions/form"%>
+         <%= render "users/formnew"%>
 
-          <label for="user_email">email</label>
-          <input
-             id="user_email"
-             name="user[email]"
-             type="text">
-          <br>
+      </section>
+    <%end%>
+ <% if flash[:errors] %>
+  <div class="errors">
 
-          <label for="user_password">Password</label>
-          <input
-             id="user_password"
-             name="user[password]"
-             type="password">
-          <br>
-
-          <button type="submit">Log In</button>
-        </form>
-      <%end%>
+    <p>
+      <% flash[:errors].each_with_index do |error,i| %>
+        <% if i==0 %>
+          <%= error %>
+          <% next %>
+        <%end%>
+        ,<%= error %>
+      <% end %>
+      </p>
 
 
 
-      </div>
-
+  </div>
+<% end %>
 <div class="content group">
 
-
-      <% if flash[:errors] %>
-      <h3>Please fix the following errors:</h3>
-      <ul>
-        <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
-        <% end %>
-      </ul>
-      <% end %>
-
 <%= yield %>
+
 
 </div>
 

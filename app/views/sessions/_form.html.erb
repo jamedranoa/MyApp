@@ -1,17 +1,16 @@
 <h1>Sign In</h1>
 
-<form action="<%= session_url %>" method="post">
+<form action="<%= session_url %>" method="post" class="home new-session">
   <input
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="user_email">Email</label>
+  <label for="user_email">email</label>
   <input
      id="user_email"
      name="user[email]"
      type="text">
-
 
   <label for="user_password">Password</label>
   <input
@@ -20,13 +19,9 @@
      type="password">
 
   <div class="buttons-sign group">
-    <button>Sign In</button>
+    <button type="submit">Sign In</button>
     <div class="face">
-      <a href="/auth/facebook">Facebook</a>
+      <a href="/auth/facebook"><img id="face" src="images/facebook.jpg"></a>
     </div>
   </div>
-
-
 </form>
-
-

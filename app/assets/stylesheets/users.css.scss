@@ -80,42 +80,7 @@ button.mine{
   dislpay: block;
 }
 
-#modal {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-  height: 2000px;
-  background: rgba(0, 0, 0, 0.7);
-}
 
-
-#modal:hover{
-  cursor: pointer;
-}
-
-#modal > form {
-  display:block;
-  position: absolute;
-  top: 100px;
-  left: 50%;
-  width: auto;
-  height: auto;
-  margin-bottom: 100px;
-  margin-left: -250px;
-  min-height: 200px;
-  padding: 50px;
-  background: white;
-  border-radius: 20px;
-  border:1px solid black;
-  z-index: 101;
-}
-
-#modal:hover > form{
-  cursor:auto;
-};
 
 .edit input{
   display:block;
@@ -133,7 +98,7 @@ button.mine{
   margin:auto;
   margin-bottom: 5px;
   display:block;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5px;
   padding:3px;
 }
@@ -221,9 +186,7 @@ button.mine{
   display:block;
 };
 
-.hidden{
-  display:none;
-}
+
 
 .content-main{
   margin-right: 40px;
@@ -359,7 +322,9 @@ button.mine{
 
 }
 
-
+.hidden{
+  display:none;
+}
 
 
 

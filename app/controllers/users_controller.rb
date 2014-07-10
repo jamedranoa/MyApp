@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if user_params[:password] != params[:confirm]
-      flash.now[:errors] = ["Passwords must match"]
-      render :new
+      flash[:errors] = ["Passwords must match"]
+      redirect_to root_url
       return @user
     end
 
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to user_url(@user)
     else
-      flash.now[:errors] = @user.errors.full_messages
-      render :new
+      flash[:errors] = @user.errors.full_messages
+      redirect_to root_url
     end
   end
 
