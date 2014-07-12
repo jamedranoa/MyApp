@@ -46,7 +46,7 @@ textarea {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: sans-serif;'
   background-color: #eee;
   font-size: 16px;
   overflow: auto;
@@ -98,6 +98,11 @@ header .header-logo-search{
   width: 30%;
 }
 
+.header-logo-search img {
+  height:40px;
+  margin:auto;
+
+}
 header .header-links{
   float: right;
 
@@ -194,10 +199,13 @@ button:hover{
 }
 
 .errors{
+
   border:1px solid black;
   height:40px;
+  width:100%;
   text-align:center;
   background:rgba(255, 218, 161, 0.51);
+  z-index:1;
 }
 
 .errors p{

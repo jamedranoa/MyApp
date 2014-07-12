@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
+
   <script>
   $(document).ready(function(){
 
@@ -36,12 +37,15 @@
     })
   </script>
 
+
+
+
 </head>
 <body>
   <header class="header group">
 
       <ul class="header-logo-search">
-        <li><a href="/" %>Logo</a></li>
+        <li><a href="/" %><img src="images/logo-nav.png"></a></li>
         <li><a href="<%= new_search_url %>">Search</a></li>
       </ul>
 
@@ -61,7 +65,8 @@
 
           <% else %>
             <li class="in"><a href=#>Sign in</a></li>
-            <li class="up"><a href=#>Sign Up</a></li>
+            <li class="up"><a href=#>Sign U
+              0p</a></li>
           <% end %>
       </ul>
 
@@ -88,11 +93,13 @@
         ,<%= error %>
       <% end %>
       </p>
-
-
-
   </div>
+
+
+
 <% end %>
+
+  <%= yield :home %>
 <div class="content group">
 
 <%= yield %>

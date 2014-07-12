@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.serializeJSON
 //= require jquery-ui
+//= require jquery.backstretch.min
 //= require underscore
 //= require backbone
 //= require jquery.slides.min.js

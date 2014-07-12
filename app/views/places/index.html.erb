@@ -1,25 +1,44 @@
-<script>
-$(document).ready(function () {
+<% content_for :home do %>
+  <script>
+  $(document).ready(function () {
 
-  $(".datepicker").datepicker({ dateFormat: 'dd-mm-yy'})
+    $(".datepicker").datepicker({ dateFormat: 'dd-mm-yy'})
+    $(".new-search").backstretch([
+      "/images/home.jpg",
+      "/images/home3.jpg",
+      "/images/home4.jpg"
+      ],{duration:3000,fade:750});
 
-})
-</script>
+  })
+  </script>
+
+  <style>
+  .errors{
+    position:absolute;
+  }
+
+  .content{
+    display:none;
+  }
 
 
+  </style>
 
 
-<div class="new-search">
-  <div class="search-form">
-    <%= render "searches/form" %>
+  <div class="new-search">
+    <img src="/images/logo.png">
+    <div class="search-form">
+      <%= render "searches/form" %>
+    </div>
   </div>
-</div>
 
 
-<div class="sample-places">
-<ul>
-<% @places.each do |place| %>
- <li> <%= render "minishow", place: place %></li>
+  <div class="sample-places">
+  <ul>
+  <% @places.each do |place| %>
+   <li> <%= render "minishow", place: place %></li>
+  <% end %>
+  </ul>
+  </div>
+
 <% end %>
-</ul>
-</div>
