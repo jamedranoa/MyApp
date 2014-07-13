@@ -65,14 +65,15 @@ ActiveRecord::Schema.define(version: 20140713154802) do
   add_index "places", ["title"], name: "index_places_on_title", using: :btree
 
   create_table "requests", force: true do |t|
-    t.integer  "place_id",     null: false
-    t.integer  "applicant_id", null: false
-    t.date     "start_date",   null: false
-    t.date     "end_date",     null: false
+    t.integer  "place_id",            null: false
+    t.integer  "applicant_id",        null: false
+    t.date     "start_date",          null: false
+    t.date     "end_date",            null: false
     t.text     "message"
     t.boolean  "approved"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "notifications_count"
   end
 
   add_index "requests", ["applicant_id"], name: "index_requests_on_applicant_id", using: :btree
