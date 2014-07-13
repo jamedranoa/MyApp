@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712200800) do
+ActiveRecord::Schema.define(version: 20140713154802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "notifications", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.integer  "event_id"
+    t.boolean  "is_read"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "place_pics", force: true do |t|
     t.integer  "place_id"
@@ -78,13 +88,14 @@ ActiveRecord::Schema.define(version: 20140712200800) do
   add_index "reserved_dates", ["place_id", "day"], name: "index_reserved_dates_on_place_id_and_day", unique: true, using: :btree
 
   create_table "reviews", force: true do |t|
-    t.text     "body",            null: false
-    t.integer  "maker_id",        null: false
-    t.integer  "reviewable_id",   null: false
-    t.string   "reviewable_type", null: false
-    t.integer  "score",           null: false
+    t.text     "body",                null: false
+    t.integer  "maker_id",            null: false
+    t.integer  "reviewable_id",       null: false
+    t.string   "reviewable_type",     null: false
+    t.integer  "score",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "notifications_count"
   end
 
   add_index "reviews", ["reviewable_id", "reviewable_type"], name: "index_reviews_on_reviewable_id_and_reviewable_type", using: :btree
@@ -107,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140712200800) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.text     "intro"
+    t.integer  "notifications_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

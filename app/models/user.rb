@@ -20,7 +20,10 @@ class User < ActiveRecord::Base
   has_many :made_requests,class_name: "Request",foreign_key: :applicant_id, dependent: :destroy
 
   has_many :made_reviews, class_name: "Review", foreign_key: :maker_id
-  has_many :reviews, as: :reviewable
+  has_many :reviews, as: :reviewable, inverse_of: :reviewable, dependent: :destroy
+
+  has_many :notifications,inverse_of: :user, dependent: :destroy
+
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
