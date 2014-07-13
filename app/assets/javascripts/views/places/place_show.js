@@ -16,7 +16,6 @@ App.Views.PlaceShow = Backbone.View.extend({
   },
 
   beginEditing: function () {
-
     this.model.get("owner_id") === Window.currentUserId ? this.open = true : this.open = false;
     this.render();
   },
