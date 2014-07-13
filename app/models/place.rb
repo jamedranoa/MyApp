@@ -3,17 +3,17 @@ class Place < ActiveRecord::Base
   validates :title, presence: true
 
   belongs_to :owner, class_name: "User"
-  
-  has_many :reserved_dates
-  
-  has_many :requests, dependent: :destroy
-  
-  has_many :reviews, as: :reviewable
-  
-  has_many :place_pics, dependent: :destroy
-  
-  has_many :place_pics
 
+  has_many :reserved_dates
+
+  has_many :requests, dependent: :destroy
+
+  has_many :reviews, as: :reviewable
+
+  has_many :place_pics, dependent: :destroy
+
+  geocoded_by :full_address
+  after_validation :geocode
 
   def reserved_days
     self.reserved_dates.pluck(:day)
@@ -32,9 +32,13 @@ class Place < ActiveRecord::Base
       self.reserved_dates.create!(day: date)
     end
   end
-  
+
   def compatible_dates(dates)
     (self.reserved_days & dates).empty?
+  end
+
+  def full_address
+    "#{self.address}, #{self.city}, #{self.country}"
   end
 
 end
