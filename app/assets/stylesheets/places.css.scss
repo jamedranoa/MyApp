@@ -218,27 +218,53 @@
 
 
 //----------------------------mini-show-pop------------------------------------
+.minishow{
+  position:relative;
+  box-shadow: 2px 2px 10px 0px black;
+}
 .minishow img{
   height:200px;
   width:200px;
   border: 2px solid black;
 }
-.minishow h3{
+.mini-info {
   position:absolute;
+  bottom:0;
   display:none;
+}
+
+.mini-info img{
+  float:left;
+  height:40px;
+  width:40px;
+  border-radius:100px;
+}
+
+.mini-info h3{
+  float:left;
+  text-align:center;
+  width:155px;
+  margin:0px;
+  margin-top:10px;
+  font-weight:bold;
 }
 
 .minishow:hover{
   cursor:pointer;
-  box-shadow: 10px 10px 10px #888888;;
+  box-shadow: 0px 0px 0px #888888;
 }
 
-.minishow:hover h3{
+.minishow:hover .mini-info{
+  background:rgba(255, 234, 234, 0.53);
+  color:black;
+}
+
+.mini-info{
   display:block;
   background:rgba(14, 13, 13, 0.53);
   color:white;
   font-weight:bold;
-  width:90px;
+  width:205px;
 }
 //----------------------------placesindex---------------------------------------
 

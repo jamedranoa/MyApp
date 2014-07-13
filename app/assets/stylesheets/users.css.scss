@@ -13,9 +13,10 @@
 }
 
 .content-main{
-  float: right;
+  float: left;
   width: 60%;
   height:900px;
+  margin-left:60px;
   overflow:hidden;
 }
 
@@ -126,10 +127,10 @@ button.mine{
 
 .title{
   margin-top: 10px;
-  border: 2px solid dimgray;
+  border: 2px solid black;
   display:block;
   color: white;
-  background:dimgray;
+  background:black;
   width:246px;
   border-top-left-radius:10px;
   border-top-right-radius:10px;
@@ -162,7 +163,7 @@ button.mine{
   max-width:300px;
   max-height:200px;
   padding:0px;
-  background: lightgray;
+
 }
 
 .place-pic li a h2{
@@ -170,7 +171,7 @@ button.mine{
   display:none;
   top: 0;
   margin:auto;
-  width:180px;
+  width:160px;
   font-weight: bold;
   color: #fff;
   background:rgba(0, 0, 0, 0.56);
@@ -189,7 +190,7 @@ button.mine{
 
 
 .content-main{
-  margin-right: 40px;
+  margin-right: 0px;
 }
 
 

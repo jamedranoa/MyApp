@@ -1,16 +1,67 @@
-
+<% content_for :results do %>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
 <style>
   #map {
-    width:25%;
-    height:25%;
+    width:800px;
+    height:900px;
     display:block;
     border:2px solid black;
+    border-top:0px;
+    float:left;
+    margin-bottom:0px;
   }
+
+  .list-results{
+
+    float:left;
+    margin-top:20px;
+    margin-left:40px;
+  }
+
+  .list-results h1{
+    font-size: 60px;
+    margin-top: 20px;
+  }
+
+  .sample-places li{
+    margin-top:20px
+  }
+
+
+  .errors{
+    position:absolute;
+  }
+
+  .content{
+    display:none;
+  }
+
+
+
+
 </style>
+
+
+
+
+
+<div class="total-results group">
 <div id="map">
 </div>
+<div class="list-results">
+  <h1>Places Available</h1>
+<div class="sample-places">
+  <%= paginate @places %>
+<ul>
+<% @places.each do |place| %>
+ <li> <%= render "places/minishow", place: place %></li>
+<% end %>
+</ul>
+</div>
+</div>
+</div>
+
 <script>
 
 
@@ -30,12 +81,4 @@ var marker = L.marker([  <%= place.latitude %>,<%= place.longitude %> ], {
 <% end %>
 </script>
 
-
-
-<div class="sample-places">
-<ul>
-<% @places.each do |place| %>
- <li> <%= render "places/minishow", place: place %></li>
 <% end %>
-</ul>
-</div>

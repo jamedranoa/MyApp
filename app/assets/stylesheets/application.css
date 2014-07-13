@@ -47,9 +47,10 @@ textarea {
 
 body {
   font-family: sans-serif;
-  background-color: #eee;
+  background-color: #FAFAFA;
   font-size: 16px;
   overflow: auto;
+  color:rgba(0, 0, 0, 0.78);
 
 }
 
@@ -64,6 +65,13 @@ body {
   overflow: hidden;
 }
 
+h1{
+  color:black;
+}
+
+h2{
+  color:black;
+}
 
 
 strong {
@@ -86,7 +94,6 @@ header{
   width:100%;
   min-width:200px;
   vertical-align: middle;
-
   color:rgb(167, 167, 191);
   overflow: hidden;
 }
@@ -170,11 +177,11 @@ header li:hover{
 }
 
 .content {
-  width: 960px;
-  padding: 20px;
+  width: 1000px;
+  padding-top: 20px;
   margin: auto;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+
+
 }
 
 button{
@@ -216,10 +223,7 @@ button:hover{
 }
 
 
-.content {
-  background-color:white;
-  height:2000px;
-}
+
 
 .sign-in{
   position:fixed;
