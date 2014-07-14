@@ -1,5 +1,53 @@
-<ul>
+<style>
+.to-labels li{
+  float:left;
+}
+.to-labels li{
+  text-align:center;
+  color:white;
+  background:black;
+  height:60px;
+  line-height:60px;
+  border-right:1px solid white;
+  margin-bottom:20px;
+}
+
+.li-guest{
+  width:165px;
+}
+
+.li-message{
+  width:175px;
+}
+
+.li-place{
+  width:220px;
+}
+
+.li-dates{
+  width:205px;
+}
+
+.li-status{
+  width:140px;
+}
+
+.complete-request{
+  width:910px;
+  padding-top:20px;
+  padding-bottom:20px;
+  border-bottom:2px solid black ;
+}
+</style>
+<ul class="to-labels">
+  <li class="li-guest">Guest</li>
+  <li class="li-message">Message</li>
+  <li class="li-place">Place</li>
+  <li class="li-dates">Dates</li>
+  <li class="li-status">Status</li>
+</ul>
+<ul class="all-requests">
 <% @requests.each do |request| %>
- <li> <%= render "request", request: request %></li>
+ <li class="complete-request"> <%= render "request", request: request %></li>
 <% end %>
 </ul>

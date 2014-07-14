@@ -3,10 +3,12 @@
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
 
-  <label for="city">
-    Where?
-    <input type="text" name="search[city]" id="city">
-  </label>
+    <select name="search[city]" >
+      <option value="">Select a City</option>
+      <option value="New York">New York</option>
+      <option value="San Francisco">San Francisco</option>
+    </select>
+
 
   <label for="in">
     Check in

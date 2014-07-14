@@ -1,13 +1,25 @@
 <style>
 .request{
-  margin-top:60px ;
 }
 .request li{
   float:left;
-  margin-right: 40px;
+  padding-left:10px;
+  padding-right:10px;
+
+  min-height:150px;
 }
 
-
+.for-message{
+  margin-top:20px;
+  border:1px solid black;
+  max-height:150px;
+  max-width:150px;
+  min-height:150px;
+  min-width:150px ;
+  overflow-y:auto;
+  background:rgb(223, 223, 241);
+  font-color:black;
+}
 .requester img{
   margin-top: 20px;
   height:150px;
@@ -24,12 +36,20 @@
   padding-left:5px;
   height:100px;
   color:black;
-  background:rgb(214, 214, 214);
+  background:rgb(223, 223, 241);
 }
 
 .dates h1{
   display:block ;
   margin-bottom:10px;
+}
+
+.status{
+  min-width:80px;
+}
+.status button{
+  margin-left:10px;
+  margin-right:10px;
 }
 
 .status h3{
@@ -66,6 +86,12 @@
     </li>
 
     <li>
+      <div class="for-message">
+        <p><%= request.message %></p>
+      </div>
+    </li>
+
+    <li>
       <div class="the-place">
         <!-- <a href="<%= place_url(request.place_id) %>"><img src="<%= request.place.place_pics[0].picture.url(:large) %>"></a> -->
         <%= render "places/minishow", place: request.place %>
@@ -89,41 +115,31 @@
           <%elsif request.approved==false%>
             <h3 class="de">Denyed</h3>
           <% else %>
-            <h3 class="pe">Pending</h3>
+            <div class="buttons-request">
+              <form action="<%=approve_request_url(request)%>" method="post">
+                <input type="hidden"
+                       name="authenticity_token"
+                       value="<%= form_authenticity_token %>">
+                <input type="hidden"
+                       name="_method"
+                       value="put">
+                <button type="submit" id="approve">Approve</button>
+              </form>
+
+              <form action="<%=deny_request_url(request)%>" method="post">
+                <input type="hidden"
+                       name="authenticity_token"
+                       value="<%= form_authenticity_token %>">
+                <input type="hidden"
+                       name="_method"
+                       value="put">
+                <button type="submit" id="deny">Deny</button>
+              </form>
           <%end%>
         </div>
 
     </li>
-    <%if request.approved == nil %>
-    <li>
 
-      <div class="buttons-request">
-        <form action="<%=approve_request_url(request)%>" method="post">
-          <input type="hidden"
-                 name="authenticity_token"
-                 value="<%= form_authenticity_token %>">
-          <input type="hidden"
-                 name="_method"
-                 value="put">
-          <button type="submit" id="approve">Approve</button>
-        </form>
-
-        <form action="<%=deny_request_url(request)%>" method="post">
-          <input type="hidden"
-                 name="authenticity_token"
-                 value="<%= form_authenticity_token %>">
-          <input type="hidden"
-                 name="_method"
-                 value="put">
-          <button type="submit" id="deny">Deny</button>
-        </form>
-
-
-
-
-      </div>
-    </li>
-    <%end%>
 
   </ul>
 </div>

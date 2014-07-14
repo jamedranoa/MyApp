@@ -5,9 +5,9 @@ class SearchesController < ApplicationController
 
   def perform
     @places = Place.where(city: search_city)
-
-    @places = @places.select{|place| place.compatible_dates(search_dates)}
-
+    if params[:search][:start_date] < params[:search][:end_date]
+      @places = @places.select{|place| place.compatible_dates(search_dates)}
+    end
     if !@places.empty?
       session[:search]= @places.map{|place| place.id}
       redirect_to results_search_url
