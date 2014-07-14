@@ -72,36 +72,3 @@
   </div>
 </div>
 
-<!-- <img src="<%= @place.place_pics.first.picture.url(:large) %>">
-
-<h2>Reserved Dates</h2>
-<ul>
-  <% @place.reserved_dates.pluck(:day).each do |day| %>
-
-      <li><%= day %></li>
-  <%end %>
-</ul>
-
-<% if @place.owner == current_user %>
-  <a href="<%= edit_user_place_url(current_user,@place) %>">Edit</a>
-<% elsif current_user%>
-  <a href="<%= new_place_request_url(@place) %>">Make a Request</a>
-<%end%>
-
-<strong>Owner: </strong><a href="<%= user_url(@place.owner_id) %>"><%= @place.owner.fname.capitalize %></a>
-
-
-<div>
-  <h2>Reviews</h2>
-    <ul>
-      <% @place.reviews.each do |review| %>
-        <li>
-          <%= review.maker.fname %>
-            <p><%= review.body  %><p>
-        </li>
-      <% end %>
-    </ul>
-
-</div>
-
-<a href="<%= new_place_review_url(@place) %>">Make a review</a> -->

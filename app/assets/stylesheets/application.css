@@ -46,10 +46,13 @@ textarea {
 }
 
 body {
+  min-height:850px;
+  position:relative;
   font-family: sans-serif;
   background-color: #FAFAFA;
   font-size: 16px;
   overflow: auto;
+
   color:rgba(0, 0, 0, 0.78);
 
 }
@@ -112,17 +115,23 @@ header .header-logo-search{
 }
 header .header-links{
   float: right;
-
-  width:400px;
+  width:300px;
 }
+
+
 
 header li{
   float: left;
   height: 100%;
-  width: 40%;
+  width: 20%;
   text-align:center;
   font-weight: bold;
 
+
+}
+.header-links li{
+  width:300px;
+  line-height:50px;
 }
 
 header li a{
@@ -212,7 +221,7 @@ button:hover{
   width:100%;
   text-align:center;
   background:rgba(255, 218, 161, 0.51);
-  z-index:1;
+  z-index:2;
 }
 
 .errors p{
@@ -353,5 +362,68 @@ form.active{
 }
 
 
+
+/*-------------------------------------sidebar----------------------------*/
+
+.sidebar {
+  display:none;
+  background: black;
+  color:white;
+  height:100%;
+  /* Sidebar is positioned absolute to not take up space in document flow. */
+  position: absolute;
+  right: -300px;
+  transition: right 0.5s;
+
+  width: 300px;
+  /* Size it to the full height of the parent container (body) */
+  z-index:1;
+  /* Should be behind the push container */
+
+}
+
+
+
+.open-menu {
+  display:block;
+  right:0;
+}
+
+.sidebar li {
+  position:relative;
+  border-bottom:2px solid white;
+  height:60px;
+  line-height:60px;
+  font-weight:bold;
+  text-align:center;
+
+}
+
+.in-action{
+  background:white;
+  color:black;
+}
+
+.in-action li{
+  color: white;
+}
+
+
+
+
+
+.sidebar li img{
+  position:absolute;
+  top:10px;
+  left:30px;
+  height:40px;
+}
+
+
+
+.sidebar li:hover {
+  background: white;
+  color:black;
+}
 
 

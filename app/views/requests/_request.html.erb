@@ -7,19 +7,17 @@
   margin-right: 40px;
 }
 
-.request img{
-  border: 3px solid black ;
-}
+
 .requester img{
+  margin-top: 20px;
   height:150px;
   border-radius: 100px;
 }
 
-.the-place img{
-  height:150px;
-}
+
 
 .dates{
+  margin-top:20px;
   border:1px solid black;
   padding-top:50px;
   padding-right:5px;
@@ -69,7 +67,8 @@
 
     <li>
       <div class="the-place">
-        <a href="<%= place_url(request.place_id) %>"><img src="<%= request.place.place_pics[0].picture.url(:large) %>"></a>
+        <!-- <a href="<%= place_url(request.place_id) %>"><img src="<%= request.place.place_pics[0].picture.url(:large) %>"></a> -->
+        <%= render "places/minishow", place: request.place %>
       </div>
     </li>
 

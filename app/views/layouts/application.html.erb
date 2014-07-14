@@ -34,6 +34,18 @@
 
       });
 
+      $("li.for-side").on("click", function(event){
+        $("nav").toggleClass("open-menu");
+        $(".to-shrink").toggleClass("shrinked");
+      });
+
+      $("#list-places").on("click", function (event) {
+        $("#all-places").toggleClass("hidden");
+        $("#list-places").toggleClass("in-action")
+      })
+
+
+
     })
   </script>
 
@@ -54,19 +66,18 @@
         <script>
           Window.currentUserId = <%= current_user.id %>
         </script>
-          <li class="profile"><a class="group" href="<%= user_url(current_user)%>" class="to-profile">
+          <li class="profile for-side">
             <div class="fname"><%= current_user.fname%></div>
             <img class="min-pic" src="<%= current_user.picture.url(:small)%>">
-           </a>
+            <h3><%= current_user.notifications_count %></h3>
           </li>
-            <li><%= button_to "Log Out", session_url, :method => :delete %></li>
+
 
 
 
           <% else %>
             <li class="in"><a href=#>Sign in</a></li>
-            <li class="up"><a href=#>Sign U
-              0p</a></li>
+            <li class="up"><a href=#>Sign Up</a></li>
           <% end %>
       </ul>
 
@@ -98,15 +109,38 @@
 
 
 <% end %>
+<nav class="sidebar">
+  <ul>
+    <li>
+      <a href="<%= user_url(current_user) %>"><img src="<%= asset_path("images/profile.png") %>">Your Profile</a>
+    </li>
+    <li><a href="<%= user_requests_url(current_user) %>"><img src="<%= asset_path("images/request.png") %>">Requests</a></li>
+    <li id="list-places">
+
+      <h3>Your Places</h3>
+      <div class="hidden" id="all-places">
+        <ul>
+          <% current_user.places.each do |place| %>
+            <li><a href="<%= place_url(place) %>"><img src="<%= place.place_pics.first.picture.url(:small) %>"><%= place.title %></a></li>
+          <% end %>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+
 
   <%= yield :home %>
   <%= yield :results %>
-<div class="content group">
-
-<%= yield %>
 
 
-</div>
+
+
+
+  <div class="content group"><%= yield %></div>
+
 
 </body>
+
 </html>

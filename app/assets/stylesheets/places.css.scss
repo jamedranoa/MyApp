@@ -273,7 +273,7 @@
 //  top:50px;
 //  left:0px;
   border: 1px solid black;
-  height:800px;
+  height:600px;
   width:100%;
   z-index:0;
 }
@@ -356,6 +356,8 @@
 .sample-places{
   margin:auto;
   margin-top:20px;
+  margin-bottom:0px;
+  height:230px;
 }
 
 .sample-places li{
