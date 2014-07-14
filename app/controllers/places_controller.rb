@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 
   def new
-    @place = current_user.places.new()
+    @place = Place.new
   end
 
   def create
