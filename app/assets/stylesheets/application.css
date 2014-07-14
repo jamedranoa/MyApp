@@ -134,6 +134,13 @@ header li{
   line-height:50px;
 }
 
+.header-links li.in{
+  width:155px;
+}
+.header-links li.up{
+  width:142px;
+}
+
 header li a{
   display: block;
   height:50px;

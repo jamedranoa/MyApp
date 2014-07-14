@@ -109,25 +109,27 @@
 
 
 <% end %>
-<nav class="sidebar">
-  <ul>
-    <li>
-      <a href="<%= user_url(current_user) %>"><img src="<%= asset_path("images/profile.png") %>">Your Profile</a>
-    </li>
-    <li><a href="<%= user_requests_url(current_user) %>"><img src="<%= asset_path("images/request.png") %>">Requests</a></li>
-    <li id="list-places">
+<% if signed_in? %>
+  <nav class="sidebar">
+    <ul>
+      <li>
+        <a href="<%= user_url(current_user) %>"><img src="<%= asset_path("images/profile.png") %>">Your Profile</a>
+      </li>
+      <li><a href="<%= user_requests_url(current_user) %>"><img src="<%= asset_path("images/request.png") %>">Requests</a></li>
+      <li id="list-places">
 
-      <h3>Your Places</h3>
-      <div class="hidden" id="all-places">
-        <ul>
-          <% current_user.places.each do |place| %>
-            <li><a href="<%= place_url(place) %>"><img src="<%= place.place_pics.first.picture.url(:small) %>"><%= place.title %></a></li>
-          <% end %>
-        </ul>
-      </div>
-    </li>
-  </ul>
-</nav>
+        <h3>Your Places</h3>
+        <div class="hidden" id="all-places">
+          <ul>
+            <% current_user.places.each do |place| %>
+              <li><a href="<%= place_url(place) %>"><img src="<%= place.place_pics.first.picture.url(:small) %>"><%= place.title %></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+<%end%>
 
 
 
