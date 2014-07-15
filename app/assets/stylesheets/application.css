@@ -65,7 +65,7 @@ body {
   font-family: sans-serif;
   background-color: #FAFAFA;
   font-size: 16px;
-  overflow: hidden;
+  overflow: auto;
   color:rgba(0, 0, 0, 0.78);
 
 }
