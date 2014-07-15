@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_credentials(user_params[:email],user_params[:password])
     if @user
       sign_in(@user)
-      redirect_to user_url(@user)
+      redirect_to root_url(@user)
     else
       flash[:errors] = ["Invalid Credentials"]
       redirect_to root_url
