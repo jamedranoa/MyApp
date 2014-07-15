@@ -447,6 +447,7 @@ form.active{
 .sidebar li:hover {
   background: white;
   color:black;
+  cursor:pointer;
 }
 
 

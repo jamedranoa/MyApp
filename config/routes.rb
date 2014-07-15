@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :users do
+    member do
+      get "trips"
+    end
+  end
+
   resources :reviews, only: [:create]
   resource :search, only: [:new] do
     post "perform"

@@ -66,6 +66,10 @@
   background: red;
 }
 
+.wa{
+  background: orange;
+}
+
 .pe{
   background:yellow;
   color:black;
@@ -81,7 +85,7 @@
   <ul class="info">
     <li>
       <div class="requester">
-        <a href="<%= user_url(request.applicant_id) %>"><img src="<%= request.applicant.picture.url(:large) %>"></a>
+        <a href="<%= user_url(subject.id) %>"><img src="<%= subject.picture.url(:large) %>"></a>
       </div>
     </li>
 
@@ -114,6 +118,8 @@
             <h3 class="ap">Approved</h3>
           <%elsif request.approved==false%>
             <h3 class="de">Denyed</h3>
+          <% elsif request.applicant == current_user %>
+            <h3 class="wa">Waiting</h3>
           <% else %>
             <div class="buttons-request">
               <form action="<%=approve_request_url(request)%>" method="post">

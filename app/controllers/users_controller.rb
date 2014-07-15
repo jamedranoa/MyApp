@@ -51,6 +51,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def trips
+    @requests = current_user.made_requests
+  end
+
 
   private
 

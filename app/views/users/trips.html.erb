@@ -40,7 +40,7 @@
 }
 </style>
 <ul class="to-labels">
-  <li class="li-guest">Guest</li>
+  <li class="li-guest">Owner</li>
   <li class="li-message">Message</li>
   <li class="li-place">Place</li>
   <li class="li-dates">Dates</li>
@@ -48,6 +48,6 @@
 </ul>
 <ul class="all-requests">
 <% @requests.each do |request| %>
- <li class="complete-request"> <%= render "request", request: request, subject: request.applicant %></li>
+ <li class="complete-request"> <%= render "requests/request", request: request, subject: request.place.owner %></li>
 <% end %>
 </ul>

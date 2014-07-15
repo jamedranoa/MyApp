@@ -26,7 +26,7 @@ class PlacesController < ApplicationController
   end
 
   def index
-    @places = Place.all
+    @places = Place.first(4)
   end
 
 
