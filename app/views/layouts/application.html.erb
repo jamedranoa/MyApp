@@ -81,7 +81,51 @@
           <% end %>
       </ul>
 
+      <form action="<%= session_url %>" method="post" class="home new-session">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
 
+
+        <input
+           id="user_email"
+           name="user[email]"
+           type="hidden"
+           value="demo1@gmail.com">
+
+
+        <input
+           id="user_password"
+           name="user[password]"
+           type="hidden"
+           value="26ene91">
+           <button type="submit" id="demo1">DemoUser1</button>
+        </div>
+      </form>
+
+      <form action="<%= session_url %>" method="post" class="home new-session">
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+
+
+        <input
+           id="user_email"
+           name="user[email]"
+           type="hidden"
+           value="demo2@gmail.com">
+
+
+        <input
+           id="user_password"
+           name="user[password]"
+           type="hidden"
+           value="26ene91">
+           <button type="submit" id="demo2">DemoUser2</button>
+        </div>
+      </form>
 
 </header>
     <% if !signed_in? %>
