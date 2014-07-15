@@ -65,7 +65,7 @@ body {
   font-family: sans-serif;
   background-color: #FAFAFA;
   font-size: 16px;
-  overflow: auto;
+  overflow: hidden;
   color:rgba(0, 0, 0, 0.78);
 
 }
@@ -207,8 +207,10 @@ header li:hover{
 
 .content {
   width: 1000px;
+  max-height:800px;
   padding-top: 20px;
   margin: auto;
+  overflow-y:auto;
 
 
 }
@@ -308,7 +310,7 @@ button:hover{
 
 #modal > form {
   display:hidden;
-  position: absolute;
+  position: fixed;
   top: 100px;
   left: 50%;
   width: auto;
@@ -387,6 +389,7 @@ form.active{
 
 .sidebar {
   display:none;
+  position:fixed;
   background: black;
   color:white;
   height:100%;
