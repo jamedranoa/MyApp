@@ -1,28 +1,6 @@
-== README
+== Roof
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Built using Ruby on Rails, uses Backbone.js views which are appended in different elements of a classic rails view. 
+Uses Mapbox.js and Geocoder to localize a room, makes a search verifying location and dates availability, The User 
+can make a request on the fly using jQuery UJS, When an user accepts a request, automatically reserve the dates of 
+the room and eliminate any overlapping request, own design and style made by "hand" using only Css.
