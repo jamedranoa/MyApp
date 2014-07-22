@@ -37,7 +37,7 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = current_user.requests
+    @requests = current_user.requests.reverse
 
   end
 
