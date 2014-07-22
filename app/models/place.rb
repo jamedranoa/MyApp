@@ -8,6 +8,7 @@ class Place < ActiveRecord::Base
 
   has_many :requests, dependent: :destroy
 
+  has_many :reviews, as: :reviewable, inverse_of: :reviewable, dependent: :destroy
 
   has_many :place_pics, dependent: :destroy
 
