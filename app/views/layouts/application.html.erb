@@ -47,14 +47,15 @@
       $("li.for-side").on("click", function(event){
         $("nav").toggleClass("open-menu");
         $(".to-shrink").toggleClass("shrinked");
+        $(".errors").addClass("hidden");
       });
+
+      $(".datepicker-search").datepicker({ dateFormat: 'dd-mm-yy', minDate: 0 });
 
       $("#list-places").on("click", function (event) {
         $("#all-places").toggleClass("hidden");
-        $("#list-places").toggleClass("in-action")
+        $("#list-places").toggleClass("in-action");
       })
-
-
 
     })
   </script>

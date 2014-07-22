@@ -3,5 +3,5 @@ class PlacePic < ActiveRecord::Base
   #validates_attachment_presence :picture
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
-  belongs_to :picture
+  belongs_to :place
 end

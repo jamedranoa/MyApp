@@ -49,6 +49,13 @@ Rails.application.routes.draw do
   end
 
   get '/auth/facebook/callback', to: 'oauth_callbacks#facebook'
+
+  # resource :places, only:[] do
+#     member do
+#       post "new_pic"
+#     end
+#   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
