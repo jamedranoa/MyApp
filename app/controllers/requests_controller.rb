@@ -15,7 +15,6 @@ class RequestsController < ApplicationController
       end
     else
       flash[:errors] = @request.errors.full_messages
-      render :new
     end
   end
 

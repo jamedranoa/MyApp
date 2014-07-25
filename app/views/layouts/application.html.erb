@@ -175,13 +175,24 @@
       <li id="list-places">
         <img src="<%= asset_path("images/places.png") %>">
         <h3>Your Places</h3>
-        <div class="hidden" id="all-places">
-          <ul>
-            <% current_user.places.each do |place| %>
-              <li><a href="<%= place_url(place) %>"><img src="<%= place.place_pics.first.picture.url(:small) %>"><%= place.title %></a></li>
-            <% end %>
-          </ul>
-        </div>
+      </li>
+      <div class="hidden" id="all-places">
+        <ul>
+          <% current_user.places.each do |place| %>
+            <li><a href="<%= place_url(place) %>"><img src="<%= place.place_pics.first.picture.url(:small) %>"><%= place.title %></a></li>
+          <% end %>
+        </ul>
+      </div>
+      <li><a href="<%= places_url %>"><img src="<%= asset_path("images/search.png") %>">Search</a></li>
+      <li id="li-logout">
+        <img src="<%= asset_path("images/logout.png") %>">
+        <form method="post" action="<%= session_url %>">
+          <input type="hidden"
+                 name="authenticity_token"
+                 value="<%= form_authenticity_token %>">
+          <input name="_method" type="hidden" value="delete">
+          <input type="submit" value="Log Out" id="to-logout">
+        </form>
       </li>
     </ul>
   </nav>

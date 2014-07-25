@@ -19,7 +19,7 @@ class SearchesController < ApplicationController
   end
 
   def results
-    @places= Kaminari.paginate_array(Place.find(session[:search])).page(params[:page]).per(2)
+    @places= Kaminari.paginate_array(Place.find(session[:search])).page(params[:page]).per(4)
   end
 
   private

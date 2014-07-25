@@ -60,12 +60,12 @@ select {
 
 
 body {
-  min-height:850px;
+  height:100%;
   position:relative;
   font-family: sans-serif;
   background-color: #FAFAFA;
   font-size: 16px;
-  overflow: auto;
+  overflow: hidden;
   color:rgba(0, 0, 0, 0.78);
 
 }
@@ -207,12 +207,11 @@ header li:hover{
 
 .content {
   width: 1000px;
+  height:80%;
   max-height:800px;
   padding-top: 20px;
   margin: auto;
-  overflow-y:auto;
-
-
+  overflow-y: auto;
 }
 
 button{
@@ -392,6 +391,7 @@ form.active{
   position:fixed;
   background: black;
   color:white;
+  min-height:1000px;
   height:100%;
   /* Sidebar is positioned absolute to not take up space in document flow. */
   position: absolute;
@@ -451,6 +451,20 @@ form.active{
   cursor:pointer;
 }
 
+
+#li-logout{
+  border-top:2px solid white;
+  margin-top:100px;
+
+}
+
+#to-logout{
+  width:100%;
+}
+
+#to-logout:hover{
+  cursor:pointer;
+}
 
 
 /*-----------------------------------Demo buttons---------------------------*/
