@@ -78,7 +78,7 @@
   </div>
   <% end %>
   <form action="<%= new_user_place_url(@user) %>" method="get">
-    <button class="user-edit<%= mine %>" type="submit"> Add Place</button>
+    <!-- <button class="user-edit<%= mine %>" type="submit"> Add Place</button> -->
   </form>
 
 
@@ -86,27 +86,7 @@
   <button><a href="<%= user_requests_url(current_user) %>">Requests</a></button>
   <%end %>
 
-  <!-- <div class="pending-requests">
 
-   <h2>Pending Requests</h2>
-   <% if current_user && @user.id == current_user.id %>
-   <ul>
-     <% @user.made_requests.each do |request| %>
-       <% if request.approved == true %>
-         <% a = "Approved"%>
-       <%elsif request.approved == false%>
-         <% a = "Denied"%>
-       <%else%>
-         <% a = "Waiting" %>
-       <%end%>
-
-         <li><%= "#{request.place.title}, #{a}" %></li>
-       <% end %>
-   </ul>
-
-   <% end %>
-
-  </div> -->
 
 </div>
 

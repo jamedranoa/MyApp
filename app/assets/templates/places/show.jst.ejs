@@ -66,5 +66,7 @@
     <%=showing("max_guest","Bathrooms")%>
  </table>
   </div>
+  <% if(place.get("owner_id") === Window.currentUserId) { %>
   <button id="edit">Edit Your Place</button>
+  <%}%>
 </div>
