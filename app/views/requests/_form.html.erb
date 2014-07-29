@@ -23,7 +23,10 @@
     Message
     <textarea name="request[message]" id="message"></textarea>
   </label>
-
+  <% if !owner %>
   <button>Make Request</button>
+  <% else %>
+    <h6>This is your place</h6>
+  <% end %>
 
 </form>
