@@ -1,4 +1,19 @@
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
 
+  <style>
+  #map-place{
+    width:100%px;
+    height:300px;
+    margin:auto;
+    margin-top:0px;
+    border:2px solid black;
+  }
+
+  #for-map{
+    margin-top:20px;
+  }
+  </style>
 
   <script>
   $(document).ready(function () {
@@ -45,6 +60,8 @@
   })
   </script>
 
+
+
 <div class="side">
 <% if current_user && @place.owner_id != current_user.id %>
   <div class="new-review group">
@@ -78,7 +95,21 @@
   </div>
   <div class="owner-info">
     <h3><a href="<%=user_url(@place.owner_id)%>">Host: <%= @place.owner.fname %></a></h3>
-    <a href="<%=user_url(@place.owner_id)%>"><img src="<%= @place.owner.picture.url(:large) %>"><a href="user_url(@place.owner_id)">
+    <a href="<%=user_url(@place.owner_id)%>"><img src="<%= @place.owner.picture.url(:large) %>"></a>
   </div>
+  <h2 id="for-map">Location</h2>
+  <div id="map-place">
+  </div>
+
+
 </div>
 
+
+<script>
+  var map2 = L.mapbox.map('map-place','jorar91.ioll56j6').setView([ <%= @place.latitude %>,<%= @place.longitude %> ],12)
+  var marker2 = L.marker([ <%= @place.latitude %>,<%= @place.longitude %> ], {
+         icon: L.mapbox.marker.icon({
+           'marker-color': '#9c89cc'
+         })
+       }).addTo(map2);
+ </script>
