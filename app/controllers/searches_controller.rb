@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
 
   def perform
     @places = Place.where(city: search_city)
+    session[:search_data]={city: search_city}
     if params[:search][:start_date] < params[:search][:end_date]
       @places = @places.select{|place| place.compatible_dates(search_dates)}
     end
@@ -19,7 +20,8 @@ class SearchesController < ApplicationController
   end
 
   def results
-    @places= Kaminari.paginate_array(Place.find(session[:search])).page(params[:page]).per(4)
+    @places = Kaminari.paginate_array(Place.find(session[:search])).page(params[:page]).per(4)
+    @map_coordinates = Geocoder.coordinates(session[:search_data]["city"])
   end
 
   private
