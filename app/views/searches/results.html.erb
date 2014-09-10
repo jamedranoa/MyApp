@@ -2,18 +2,9 @@
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
 <style>
-  #map {
-    width:800px;
-    height:900px;
-    display:block;
-    border:2px solid black;
-    border-top:0px;
-    float:left;
-    margin-bottom:0px;
-  }
+  
 
   .list-results{
-
     float:left;
     margin-top:20px;
     margin-left:40px;
@@ -40,7 +31,45 @@
   .content{
     display:none;
   }
+  #map {
+    width:600px;
+    height:900px;
+    display:block;
+    border:2px solid black;
+    border-top:0px;
+    float:left;
+    margin-bottom:0px;
+  }
+  
+  .total-results{
+    height:100%;
+  }
 
+  @media(max-width:1450px){
+    #map{
+      width:40%;
+    }
+    
+ 
+    .list-results{
+      width:40%;
+      height:10%;
+      overflow:auto;
+    }
+    .sample-places{
+      width:100%;
+    }
+    
+ 
+    
+  }
+  
+  @media(max-width:1090px){
+    body{
+      overflow-y:scroll;
+    }
+  }
+  
 
 
 
